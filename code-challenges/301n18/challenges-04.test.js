@@ -21,8 +21,8 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const generateSubmitButton = () => {
-  // Solution code here...
-}
+  $('section label:nth-child(2)').append('<button type="submit">submit</button>');
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -34,9 +34,8 @@ For example:
 'hello world' returns false
 ------------------------------------------------------------------------------------------------ */
 
-const isNum = (input) => {
-  // Solution code here...
-};
+const isNum = (input) => /[0-9]/.test(input);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -45,7 +44,10 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let capArr = [];
+  let cap = 
+  if(cap === true)
+  capArr.push(str)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,14 +113,14 @@ All the code below will verify that your functions are working to solve the chal
 DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-04.solution.test.js
 ------------------------------------------------------------------------------------------------ */
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should add a submit button to the DOM', () => {
     generateSubmitButton();
     expect($('button').text()).toStrictEqual('submit');
   })
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
@@ -215,4 +217,4 @@ xdescribe('Testing challenge 8', () => {
 
 function createSnippetWithJQuery(html){
   return cheerio.load(html);
-};
+}
