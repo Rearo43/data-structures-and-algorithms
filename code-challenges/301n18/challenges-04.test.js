@@ -45,7 +45,7 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   let capArr = [];
-  let cap = 
+  let cap = /
   if(cap === true)
   capArr.push(str)
 };
@@ -56,7 +56,10 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  // let cityArr = [];
+  let checkCity = /[A-J][a-j]/;
+  checkCity.match(arr);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,7 +137,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
