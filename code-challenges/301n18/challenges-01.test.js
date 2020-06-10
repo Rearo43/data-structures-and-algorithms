@@ -54,11 +54,23 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-// const createList = availableItems.forEach((item) => {
+const createList = (availableItems) => {
+  let shoppingList = [];
+
+  availableItems.forEach(item =>{
+
+    if(item.available === true){
+      shoppingList.push(item.name);
+    }
+
+  });
+  return shoppingList;
+
+};
 //   let newArr = []
 //   if(availableItems.available === true)
 //   newArr.push(availableItems.name);
-  
+
 // });
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,7 +88,27 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach(num =>{
+    if(num % 15 === 0){
+      newArr.push('Fizz Buzz');
+    }
+
+    else if(num % 5 === 0){
+      newArr.push('Buzz');
+    }
+
+    else if(num % 3 === 0){
+      newArr.push('Fizz');
+    }
+
+    else{
+      newArr.push(num);
+    }
+
+  });
+  return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -103,7 +135,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -112,7 +144,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
