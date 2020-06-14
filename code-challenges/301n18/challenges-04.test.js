@@ -62,7 +62,7 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // let cityArr = [];
-  let checkCity = /[A-J][a-j]/g;
+  let checkCity = /[A-J][a-j]*/g;
   return arr.match(checkCity);
 
 };
@@ -142,7 +142,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
