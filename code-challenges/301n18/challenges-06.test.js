@@ -66,7 +66,19 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  // Solution code here...
+  let newHTML = [];
+
+  characters.forEach(GOT =>{
+    let $temp = $('#template').html();
+    let mustacheFill = Mustache.render($temp,{
+      'name': GOT.name, 'spouse': GOT.spouse, 'children': GOT.character, 'house': GOT.house
+
+    });
+    newHTML.push(mustacheFill);
+
+  });
+  return newHTML;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -79,8 +91,15 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
   finalExam: true
 };
 
-const getCourseKeys = (obj) => {
-  // Solution code here...
+const getCourseKeys = () => {
+  let newArr = [];
+
+  for(let property in courseInfo){
+    newArr.push(property);
+
+  }
+  return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +109,7 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(house =>houses.push(house.house));
   return houses;
 };
 
@@ -104,7 +123,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  arr.forEach(house =>{
+    let children = house.children;
+    let head = house.name;
+
+    if(head === character && children.length === 0){
+      return false;
+    }else{
+      return true;
+    }
+  });
+  // if(children)
+
 
 };
 
@@ -165,7 +195,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-06.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return html markup with the character', () => {
     const filledTemplates = templatingWithMustache();
     const $ = cheerio.load(filledTemplates[0]);
@@ -173,20 +203,20 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the keys from an object', () => {
     expect(getCourseKeys(courseInfo)).toStrictEqual(['name', 'duration', 'topics', 'finalExam']);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of the names of the houses', () => {
     expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
     expect(getHouses(characters).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });
