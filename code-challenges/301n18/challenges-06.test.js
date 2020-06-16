@@ -123,18 +123,23 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
+  let tf;
+
   arr.forEach(house =>{
     let children = house.children;
     let head = house.name;
 
-    if(head === character && children.length === 0){
-      return false;
-    }else{
-      return true;
+    if(children.length !== 0 && character === head){
+      tf = true;
     }
-  });
-  // if(children)
 
+    else if(children.length === 0 && character === head){
+      tf = false;
+
+    }
+
+  });
+  return tf;
 
 };
 
