@@ -19,8 +19,8 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const addTea = () => {
-  $('ul:nth-child(5)').append('<li>tea</li>');
-}
+  $('ul:nth-child(n+1)').append('<li>tea</li>');
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -30,8 +30,11 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  for(let i = 0; i < arr.length; i++)
-  arr.map
+  let newArr = [];
+  for(let i = 0; i < arr.length; i++){
+    newArr.push(Math.pow(2,arr[i]));
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,9 +62,8 @@ Read the MDN documentation on String.charCodeAt() if necessary.
 For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
-const charCode = (arr) => {
-  // Solution code here...
-};
+const charCode = (arr) => arr.map(num => num.charCodeAt());
+//Default .charCodeAt(index) is 0 if not index if given.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
@@ -167,14 +169,14 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-07.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should add tea to the list', () => {
     addTea();
     expect($('li:nth-child(6)').text()).toStrictEqual('tea');
   })
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -196,7 +198,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -207,7 +209,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array containing the character code for each letter', () => {
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
