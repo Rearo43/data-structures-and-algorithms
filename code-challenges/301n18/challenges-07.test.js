@@ -19,7 +19,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const addTea = () => {
-  // Solution code here...
+  $('ul:nth-child(5)').append('<li>tea</li>');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +30,8 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  // Solution code here...
+  for(let i = 0; i < arr.length; i++)
+  arr.map
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,7 +40,9 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach(num => newArr.push(Math.pow(2,num)));
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,9 +50,7 @@ CHALLENGE 4
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
-const mapTwoToThe = (arr) => {
-  // Solution code here...
-};
+const mapTwoToThe = (arr) => arr.map(num => Math.pow(2, num));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -166,7 +167,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-07.test.js
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+xdescribe('Testing challenge 1', () => {
   test('It should add tea to the list', () => {
     addTea();
     expect($('li:nth-child(6)').text()).toStrictEqual('tea');
@@ -184,7 +185,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
