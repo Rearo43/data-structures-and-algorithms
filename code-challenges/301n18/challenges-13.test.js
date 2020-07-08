@@ -19,7 +19,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
-// Solution code here...
+$('.pear').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,9 +28,9 @@ Write a function named firstLetters that takes in an array of strings and return
 For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 'w', 'w', ':']
 ------------------------------------------------------------------------------------------------ */
 
-const firstLetters = (arr) => {
-  // Solution code here...
-};
+const firstLetters = (arr) => arr.map(lett => {
+  return lett[0];
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -39,7 +39,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach(str =>{
+    let look = str.includes(':)');
+
+    if(look === true){newArr.push(str);}
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,7 +55,9 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  let newArr = [];
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -141,7 +149,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-13.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return markup with typo fixed', () => {
     fixTheTypo();
 
@@ -149,7 +157,7 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the first letter of each element of the array', () => {
     const words = ['apple', 'banana', 'cantaloupe'];
 
@@ -159,7 +167,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return only the strings that contain smiley faces', () => {
     const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
 
@@ -170,7 +178,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a standardized set of phone numbers', () => {
     const nums = ['(123) 456-7890', '(222) 222-2222'];
 
