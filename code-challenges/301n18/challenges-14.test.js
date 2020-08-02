@@ -20,10 +20,10 @@ const createServer = () => {
   });
 
   app.use('*', (req, res) => {
-    res.status(404);
+    res.status(404).send('route not found');
   });
 
-  var server = app.listen(3000, () => {
+  var server = app.listen(3000, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
   });
@@ -36,9 +36,7 @@ Write a function named toTitleCase that takes in an array of strings and returns
 For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyver'].
 ------------------------------------------------------------------------------------------------ */
 
-const toTitleCase = (arr) => {
-  // Solution code here...
-};
+const toTitleCase = (arr) => arr.map(str => str.charAt(0).toUpperCase() + str.substring(1));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -108,9 +106,15 @@ let starWarsData = [{
   gender: 'n/a'
 }];
 
-let biggerThanLuke = (arr) => {
-  // Solution code here...
-};
+let biggerThanLuke = (arr) => arr.reduce((acc, val) => {
+  if (+val.mass > +arr[0].mass) {
+    acc.push(val.name);
+  }
+
+  return acc;
+
+}, []).join(' - ');
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -124,26 +128,18 @@ Here is an example of the input:
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBy = (property, arr) => {
+const sortBy = (property, arr) => arr.sort((a, b) => {
+  if (a[property] < b[property]) {
+    return -1;
+  }
 
-  arr.sort((a, b) => {
+  if (a[property] > b[property]) {
+    return 1;
+  }
 
-    if(a.property > b.property){
-      return 1;
-    }
+  return 0;
+});
 
-    else if(b.property > a.property){
-      return -1;
-    }
-
-    // else{
-    //   return 0;
-    // }
-
-  });
-  return arr;
-
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -183,7 +179,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenge-14.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', function () {
+describe('Testing challenge 1', function () {
 
   const request = require('supertest');
 
@@ -216,7 +212,7 @@ xdescribe('Testing challenge 1', function () {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should convert each word to title case', () => {
     const words = ['apple', 'banana', 'MacGyver'];
     expect(toTitleCase(words)).toStrictEqual(['Apple', 'Banana', 'MacGyver']);
@@ -225,14 +221,14 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return only characters that are bigger than Luke', () => {
     expect(biggerThanLuke(starWarsData)).toStrictEqual('Darth Vader - Pex Kylar');
     expect(biggerThanLuke([])).toStrictEqual('');
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should sort items by a price', () => {
 
     expect(sortBy('price', [
