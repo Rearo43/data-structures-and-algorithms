@@ -6,9 +6,7 @@ Write a function that finds maximum value in an array
 using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
-const maxInArray = (arr) => {
-  // Solution code here...
-};
+const maxInArray = (arr) => arr.reduce((acc,val)=> Math.max(acc,val),0);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -29,8 +27,19 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+  let outputArray = [];
 
+  for (let i = 0; i < hoursOpen.length; i++){
+    let counter = 0;
+
+    for (let j = 0; j < stores.length; j++){
+      counter += stores[j][i];
+    }
+
+    outputArray.push(counter);
+  }
+
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,8 +50,15 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let outputArray = [];
+
+  hours.forEach( (hour, i )=> {
+    outputArray.push( {sales: `${data[i]} cookies`, time : hour});
+  });
+
+  return outputArray;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -65,7 +81,17 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let outputNumber = 0;
+
+  arr.forEach(value => value.items.forEach(value2 => {
+    if(value2.name === 'Treats'){
+      outputNumber += value2.quantity;
+    }
+
+  })
+  );
+
+  return outputNumber;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -151,7 +177,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenge-12.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the maximum number found', () => {
     expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
   });
@@ -160,13 +186,13 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the hourly totals array', () => {
     expect(grandTotal(cookieStores)).toStrictEqual([88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169]);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
       { sales: '88 cookies', time: '9 a.m.' },
@@ -187,7 +213,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
