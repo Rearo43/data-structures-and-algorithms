@@ -28,9 +28,7 @@ Write a function named firstLetters that takes in an array of strings and return
 For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 'w', 'w', ':']
 ------------------------------------------------------------------------------------------------ */
 
-const firstLetters = (arr) => arr.map(lett => {
-  return lett[0];
-});
+const firstLetters = (arr) => arr.map(lett => lett[0]);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -40,12 +38,14 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   let newArr = [];
+
   arr.forEach(str =>{
     let look = str.includes(':)');
 
     if(look === true){newArr.push(str);}
   });
   return newArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,10 +54,7 @@ Write a function named standardizePhoneNumbers that takes in an array of phone n
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
-const standardizePhoneNumbers = (arr) => {
-
-
-};
+const standardizePhoneNumbers = (arr) => arr.map(str => `${str.substring(1,4)}${str.substring(6,9)}${str.substring(10,14)}`);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -177,7 +174,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a standardized set of phone numbers', () => {
     const nums = ['(123) 456-7890', '(222) 222-2222'];
 
