@@ -11,15 +11,19 @@ const createServer = () => {
   const express = require('express');
   const app = express();
 
-  app.get('/', function (req, res) {
+  app.get('/', (req, res) => {
     res.status(200).send('ok');
   });
 
-  app.delete('/things/1', function (req, res) {
+  app.delete('/things/1', (req, res) => {
     res.sendStatus(405);
   });
 
-  var server = app.listen(3000, function () {
+  app.use('*', (req, res) => {
+    res.status(404);
+  });
+
+  var server = app.listen(3000, () => {
     var port = server.address().port;
     console.log('Example app listening at port', port);
   });
@@ -121,7 +125,24 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+
+  arr.sort((a, b) => {
+
+    if(a.property > b.property){
+      return 1;
+    }
+
+    else if(b.property > a.property){
+      return -1;
+    }
+
+    // else{
+    //   return 0;
+    // }
+
+  });
+  return arr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
