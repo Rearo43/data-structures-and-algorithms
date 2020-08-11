@@ -4,7 +4,9 @@
 
 ### Challenge (Array Reverse)
 -[] Take in an array of number
+
 -[] The output should be the given array reversed
+
 -[] Can't use any type of reverse method
 
 ### Approach & Efficiency

@@ -1,3 +1,9 @@
-# Data Structures and Algorithms
+# Table of contents 
 
-## Language: `JavaScript`
+[Arrays](code-challenges/arrayReverse/README.md)
+Linked Lists
+Stacks
+Queues
+Trees
+Hash Tables
+Graphs
