@@ -1,6 +1,6 @@
 # Table of contents 
 
-- [Arrays](code-challenges/arrayReverse/README.md)
+- [Arrays](code-challenges/arrayReverse)
 
 - Linked Lists
 
