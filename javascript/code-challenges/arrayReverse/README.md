@@ -12,4 +12,5 @@
 
 ### Solution
 ![Whiteboard](whiteboards/Untitled_Artwork.jpg)
+
 [Whiteboard Link](whiteboards/Untitled_Artwork.jpg)
