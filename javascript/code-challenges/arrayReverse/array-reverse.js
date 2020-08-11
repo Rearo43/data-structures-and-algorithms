@@ -8,6 +8,8 @@
 // let arr = [22, 55, 33, 77, 88, 11];
 let arr = [4, 3, 2, 6, 0];
 
-console.log(
-  arr.sort((a, b) => arr.indexOf(b)- arr.indexOf(a))
-);
+function reverse(numArr) {
+  numArr.sort((a, b) => numArr.indexOf(b) - numArr.indexOf(a));
+}
+
+reverse(arr);
