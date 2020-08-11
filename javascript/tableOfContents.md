@@ -4,6 +4,8 @@
 
 ## Table of contents
 
+> [All Whiteboards](whiteboards)
+
 - [Arrays](code-challenges/arrayReverse)
 
 - [Linked Lists](code-challenges/linkLists)
