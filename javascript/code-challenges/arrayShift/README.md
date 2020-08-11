@@ -1,4 +1,4 @@
-# `Graphs`
+# `Array Shift`
 
 ### Challenge
 

@@ -8,6 +8,8 @@
 
 - [Arrays](code-challenges/arrayReverse)
 
+- [Graphs](code-challenges/arrayShift)
+
 - [Linked Lists](code-challenges/linkLists)
 
 - [Stacks](code-challenges/stacks)
@@ -17,6 +19,3 @@
 - [Trees](code-challenges/trees)
 
 - [Hash Tables](code-challenges/hashTables)
-
-- [Graphs](code-challenges/graphs)
-
