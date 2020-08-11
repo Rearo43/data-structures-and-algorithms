@@ -1,15 +1,18 @@
-# Table of contents 
+# Data Structures and Algorithms
+> Language: `JavaScript`
 
-- [Arrays](code-challenges/arrayReverse/README.md)
+## Table of contents 
 
-- Linked Lists
+- [Arrays](code-challenges/arrayReverse)
 
-- Stacks
+- [Linked Lists](code-challenges/)
 
-- Queues
+- [Stacks](code-challenges/)
 
-- Trees
+- [Queues](code-challenges/)
 
-- Hash Tables
+- [Trees](code-challenges/)
 
-- Graphs
+- [Hash Tables](code-challenges/)
+
+- [Graphs](code-challenges/)
