@@ -14,36 +14,38 @@ const insertShiftArray = (arr, value) => {
 ------------------------------------------------------------------------------------------------ */
 
 it('Length of array should be original array plus one', () => {
-  const a = [1, 2, 3, 4];
-  const b = 0;
-
-  expect(a).toStrictEqual(a);
-  insertShiftArray(a, b);
-
-  expect(a).toHaveLength(5);
-  expect(a[2]).toStrictEqual(0);
-});
-
-it('Middle index number should be ', () => {
-  const a = [9, 8, 10, 12, 0, -2, 99];
-  const b = 0;
-
-  expect(a).toStrictEqual(a);
-  insertShiftArray(a, b);
-
-  expect(a).toHaveLength(8);
-  expect(a[4]).toStrictEqual(0);
-});
-
-it('Original array is untouched/ not mutated ', () => {
-  const a = [9, 8, 10, 12, 0, -2, 99];
+  const a = [9, 8, 10, 12, -1, -2, 99];
   const b = [1, 2, 3, 4];
   const c = 0;
 
-  expect(a).toStrictEqual(a);
-  insertShiftArray(a, b);
+  insertShiftArray(a, c);
+  insertShiftArray(b, c);
 
   expect(a).toHaveLength(8);
+  expect(b).toHaveLength(5);
+});
+
+it('Middle index number replaced with Value (odd num arrays round up) ', () => {
+  const a = [9, 8, 10, 12, -1, -2, 99];
+  const b = [1, 2, 3, 4];
+  const c = 0;
+
+  insertShiftArray(a, c);
+  insertShiftArray(b, c);
+
   expect(a[4]).toStrictEqual(0);
+  expect(b[2]).toStrictEqual(0);
+});
+
+it('Original array should be untouched/ not mutated ', () => {
+  const a = [9, 8, 10, 12, -1, -2, 99];
+  const b = [1, 2, 3, 4];
+  const c = 0;
+
+  insertShiftArray(a, c);
+  insertShiftArray(b, c);
+
+  expect(a).toStrictEqual([9, 8, 10, 12, 0, -2, 99]);
+  expect(b).toStrictEqual([1, 2, 3, 4]);
 });
 
