@@ -1,15 +1,26 @@
-# Table of contents 
+# Data Structures and Algorithms
+> Language: `JavaScript`
+
+<<<<<<< HEAD
+## Table of contents 
+=======
+- [Arrays](code-challenges/arrayReverse)
+>>>>>>> d373cb6bdf754e58b2d0249f153011b7a9549d39
 
 - [Arrays](code-challenges/arrayReverse)
 
-- Linked Lists
+- [Linked Lists](code-challenges/)
 
-- Stacks
+- [Stacks](code-challenges/)
 
-- Queues
+- [Queues](code-challenges/)
 
-- Trees
+- [Trees](code-challenges/)
 
-- Hash Tables
+<<<<<<< HEAD
+- [Hash Tables](code-challenges/)
 
+- [Graphs](code-challenges/)
+=======
 - Graphs
+>>>>>>> d373cb6bdf754e58b2d0249f153011b7a9549d39
