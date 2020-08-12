@@ -18,7 +18,7 @@ const insertShiftArray = (arr, value) => {
 };
 
 
-/* TEST for arrayShift.test.js below
+/* TEST for array-shift.test.js below
 ------------------------------------------------------------------------------------------------ */
 
 it('Length of array should be original array plus one', () => {
