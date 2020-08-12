@@ -1,5 +1,5 @@
 # `Array Reverse`
-
+> [code](array-reverse.js)
 ### Challenge
 - [x] Take in an array of number
 
