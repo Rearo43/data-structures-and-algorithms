@@ -1,34 +1,35 @@
 'use strict';
 
-let targetEx = 5;
+// let targetEx = 5;
 // let targetEx = 16;
-// let targetEx = 11;
+let targetEx = 11;
 let arrEx = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 //--Index----0--1--2--3--4--5--6---7---8---9--10--11--12--13--14--15---16
 //--Key------------*-------------------M---------------------------------
 
 function split(arr, target){
-  let initSplit = Math.ceil((arr.length / 2) - 1);
-  let useIndex = arr[initSplit];
-  console.log(initSplit);
+  let index = Math.ceil((arr.length / 2) - 1);
+  let value = arr[index];
+  console.log(value, index);
 
-  while(target === useIndex){
-    if(target < useIndex){
-      // console.log('less');
-      console.log(less(initSplit, useIndex, arr));
-    }
-
-    if(target > useIndex){
-      console.log('greater');
-    }
-
-    if(target === useIndex){
-      console.log('equal: FOUND!');
-      console.log(`Target: ${targetEx}, Found Number: ${useIndex}, Index Found: ${initSplit}`);
-
-      // return initSplit;
-    }
+  if(target === value){
+    return index;
   }
+
+  while(target !== value){
+
+    if(target < value){
+      value = arr[index/2];
+      index = index / 2;
+    }
+
+    if(target > value){
+      value = arr[index + (index / 2)];
+      index = index / 2;
+    }
+
+  }
+
 }
 
 split(arrEx, targetEx);
@@ -36,15 +37,15 @@ split(arrEx, targetEx);
 
 //Helper functions ----------------
 
-function less(initSplit, useIndex, arr){
-  let b = Math.ceil(initSplit / 2);
-  return useIndex = arr[b];
-}
+// function less(indexNum, value, arr){
+//   let b = Math.ceil(indexNum / 2);
+//   return value = arr[b];
+// }
 
-function more(){
-  let b = arr.length
-  let a = Math.ceil(a / 2);
-}
+// function more(){
+//   let b = arr.length
+//   let a = Math.ceil(a / 2);
+// }
 
 // function found(index){
 //   return index;
@@ -67,6 +68,6 @@ function more(){
 it('check', () => {
   let arr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
   let value = 5;
-  expect(split(arr, value)).toStrictEqual(2);
+  expect(split(arr, value)).toStrictEqual(8);
 });
 
