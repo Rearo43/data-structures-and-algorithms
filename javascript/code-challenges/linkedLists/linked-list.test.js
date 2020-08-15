@@ -1,14 +1,14 @@
 'use strict';
 
 class Nodes {
-  buildCon(value, next = null) {
+  constructor(value, next = null) {
     this.value = value;
     this.next = next;
   }
 }
 
 class LinkedList {
-  buildCon() {
+  constructor() {
     this.head = null;
   }
 
@@ -17,7 +17,7 @@ class LinkedList {
   }
 
   append(value) {
-    const newNode = new Node(value);
+    const newNode = new Nodes(value);
 
     if(!this.head){
       this.head = newNode;
