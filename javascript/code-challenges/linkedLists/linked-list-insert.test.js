@@ -1,6 +1,5 @@
 'use strict';
-
-let string = [];
+let stringArr = ['NULL'];
 
 class Nodes {
   constructor(value, next = null) {
@@ -16,8 +15,12 @@ class LinkedList {
 
   insert(value) {
     this.head = new Nodes(value, this.head);
+
     let pushValue = this.head.value.toString();
-    console.log(pushValue);
+
+    stringArr.unshift(`{ ${pushValue} } -> `);
+
+    console.log(stringArr.toString().replace(',', ''));
   }
 
   append(value) {
@@ -35,14 +38,12 @@ class LinkedList {
     }
 
     thisNode.next = newNode;
-    let pushValue = this.head.value.toString();
-    string.push(pushValue);
   }
 
 }
 
 
-/* TEST for linked-list.test.js below
+/* TEST for linked-list-insert.test.js below
 ------------------------------------------------------------------------------------------------ */
 
 it('should insantiate', () => {
@@ -62,20 +63,20 @@ it('Add to empty list', () => {
 it('Change head of list, while keeping all Nodes', () => {
   const newLinkList = new LinkedList();
 
-  newLinkList.insert('AAA');
   newLinkList.insert('BBB');
+  newLinkList.insert('CCC');
 
-  expect(newLinkList.head.value).toStrictEqual('BBB');
-  expect(newLinkList.head.next.value).toStrictEqual('AAA');
+  expect(newLinkList.head.value).toStrictEqual('CCC');
+  expect(newLinkList.head.next.value).toStrictEqual('BBB');
 });
 
-it('Add to end of empty list', () => {
+xit('Add to end of empty list', () => {
   const newLinkList = new LinkedList();
-  newLinkList.append('AAA');
-  expect(newLinkList.head.value).toStrictEqual('AAA');
+  newLinkList.append('DDD');
+  expect(newLinkList.head.value).toStrictEqual('DDD');
 });
 
-it('Add to end of list with preexisting Nodes', () => {
+xit('Add to end of list with preexisting Nodes', () => {
   const newLinkList = new LinkedList();
   newLinkList.insert('AAA');
   newLinkList.insert('BBB');
@@ -88,5 +89,3 @@ it('Add to end of list with preexisting Nodes', () => {
   expect(newLinkList.head.next.next.value).toStrictEqual('CCC');
   expect(newLinkList.head.next.next.next).toBe(null);
 });
-
-

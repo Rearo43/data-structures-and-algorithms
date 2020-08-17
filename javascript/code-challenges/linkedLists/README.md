@@ -1,4 +1,19 @@
-# `Link Lists`
+# `Linked Lists Insert`
+> [code](linked-list-insert.test.js)
+### Challenge
+- [x] Class to store value and pointer to next
+- [x] Have a Node that is Head
+- From starting with empty Linked List ...
+- Tests for ...
+
+### Approach & Efficiency
+
+### Solution
+> ![White board](../../whiteboards/linkedList-Insert.png)
+
+
+
+# `Linked Lists`
 > [code](linked-list.test.js)
 ### Challenge
 - [x] Class to store value and pointer to next
@@ -20,3 +35,5 @@
 ### Approach & Efficiency
 
 ### Solution
+
+
