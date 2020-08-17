@@ -48,7 +48,7 @@ it('Add to empty list', () => {
 
   newLinkList.insert('AAA');
 
-  expect(newLinkList.head.value).toBe('AAA');
+  expect(newLinkList.head.value).toStrictEqual('AAA');
 });
 
 it('Change head of list, while keeping all Nodes', () => {
@@ -57,14 +57,14 @@ it('Change head of list, while keeping all Nodes', () => {
   newLinkList.insert('AAA');
   newLinkList.insert('BBB');
 
-  expect(newLinkList.head.value).toBe('BBB');
-  expect(newLinkList.head.next.value).toBe('AAA');
+  expect(newLinkList.head.value).toStrictEqual('BBB');
+  expect(newLinkList.head.next.value).toStrictEqual('AAA');
 });
 
 it('Add to end of empty list', () => {
   const newLinkList = new LinkedList();
   newLinkList.append('AAA');
-  expect(newLinkList.head.value).toBe('AAA');
+  expect(newLinkList.head.value).toStrictEqual('AAA');
 });
 
 it('Add to end of list with preexisting Nodes', () => {
@@ -74,10 +74,10 @@ it('Add to end of list with preexisting Nodes', () => {
 
   newLinkList.append('CCC');
 
-  expect(newLinkList.head.value).toBe('BBB');
-  expect(newLinkList.head.next.value).toBe('AAA');
+  expect(newLinkList.head.value).toStrictEqual('BBB');
+  expect(newLinkList.head.next.value).toStrictEqual('AAA');
 
-  expect(newLinkList.head.next.next.value).toBe('CCC');
+  expect(newLinkList.head.next.next.value).toStrictEqual('CCC');
   expect(newLinkList.head.next.next.next).toBe(null);
 
 
