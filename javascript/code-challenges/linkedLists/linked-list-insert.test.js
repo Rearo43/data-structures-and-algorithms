@@ -14,6 +14,7 @@ class LinkedList {
   }
 
   insert(value) {
+    let result = '';
     this.head = new Nodes(value, this.head);
 
     let pushValue = this.head.value.toString();
