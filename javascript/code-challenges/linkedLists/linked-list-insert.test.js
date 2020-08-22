@@ -1,6 +1,5 @@
 'use strict';
-let stringArr = ['NULL'];
-
+let result = '';
 class Nodes {
   constructor(value, next = null) {
     this.value = value;
@@ -13,15 +12,22 @@ class LinkedList {
     this.head = null;
   }
 
+  toString(){
+    // let result = '';
+    let valueOfNext = this.head;
+    // let pushValue = this.head.value.toString();
+
+    while(valueOfNext){
+      result += (`{ ${valueOfNext} } -> `);
+      valueOfNext = valueOfNext.next;
+      console.log(result + 'NULL');
+    }
+    return result + 'NULL';
+  }
   insert(value) {
-    let result = '';
     this.head = new Nodes(value, this.head);
 
-    let pushValue = this.head.value.toString();
-
-    stringArr.unshift(`{ ${pushValue} } -> `);
-
-    console.log(stringArr.toString().replace(',', ''));
+    // console.log(stringArr.toString().replace(',', ''));
   }
 
   append(value) {
@@ -40,8 +46,8 @@ class LinkedList {
 
     thisNode.next = newNode;
   }
-
 }
+console.log(result + 'NULL');
 
 
 /* TEST for linked-list-insert.test.js below
@@ -71,13 +77,13 @@ it('Change head of list, while keeping all Nodes', () => {
   expect(newLinkList.head.next.value).toStrictEqual('BBB');
 });
 
-xit('Add to end of empty list', () => {
+it('Add to end of empty list', () => {
   const newLinkList = new LinkedList();
   newLinkList.append('DDD');
   expect(newLinkList.head.value).toStrictEqual('DDD');
 });
 
-xit('Add to end of list with preexisting Nodes', () => {
+it('Add to end of list with preexisting Nodes', () => {
   const newLinkList = new LinkedList();
   newLinkList.insert('AAA');
   newLinkList.insert('BBB');
