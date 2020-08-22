@@ -1,4 +1,4 @@
-# `Queues`
+# `Stack and Queue`
 
 ### Challenge
 
