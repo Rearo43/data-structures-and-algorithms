@@ -1,10 +1,14 @@
 # `Linked Lists Insert`
 > [code](linked-list-insert.test.js)
 ### Challenge
-- [x] Class to store value and pointer to next
-- [x] Have a Node that is Head
-- From starting with empty Linked List ...
-- Tests for ...
+- [x] insantiates empty linked list
+- [] Each Node have a value stored and next property pointing to next Node 
+- [x] Have a Node that is defined as Head
+- [x] Methode called *insert* take in argument and adds new node that takes command as Head with O(1) time performance
+- [] Method called *includes* takes an argument and returns a boolean if value exists in list
+- [] Method called *toString* takes no argument returns list as a string
+- [] Throw error (semanticaly) with what went wrong if error
+- [] Test for all above and passing
 
 ### Approach & Efficiency
 

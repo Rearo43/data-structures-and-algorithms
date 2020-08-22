@@ -1,5 +1,7 @@
 'use strict';
-let result = '';
+
+let string = [];
+
 class Nodes {
   constructor(value, next = null) {
     this.value = value;
@@ -12,22 +14,10 @@ class LinkedList {
     this.head = null;
   }
 
-  toString(){
-    // let result = '';
-    let valueOfNext = this.head;
-    // let pushValue = this.head.value.toString();
-
-    while(valueOfNext){
-      result += (`{ ${valueOfNext} } -> `);
-      valueOfNext = valueOfNext.next;
-      console.log(result + 'NULL');
-    }
-    return result + 'NULL';
-  }
   insert(value) {
     this.head = new Nodes(value, this.head);
-
-    // console.log(stringArr.toString().replace(',', ''));
+    let pushValue = this.head.value.toString();
+    console.log(pushValue);
   }
 
   append(value) {
@@ -45,54 +35,63 @@ class LinkedList {
     }
 
     thisNode.next = newNode;
+    let pushValue = this.head.value.toString();
+    string.push(pushValue);
   }
+
+
+
 }
-console.log(result + 'NULL');
 
 
 /* TEST for linked-list-insert.test.js below
 ------------------------------------------------------------------------------------------------ */
+// const newLinkList = new LinkedList();
 
-it('should insantiate', () => {
+describe('Tests from link-list.test.js', () => {
   const newLinkList = new LinkedList();
 
-  expect(newLinkList).toBeDefined();
+  it('should insantiate', () => {
+    expect(newLinkList).toBeDefined();
+  });
+
+
+  it('Add to empty list', () => {
+    newLinkList.insert('AAA');
+
+    expect(newLinkList.head.value).toStrictEqual('AAA');
+  });
+
+
+  it('Change head of list, while keeping all Nodes', () => {
+    newLinkList.insert('AAA');
+    newLinkList.insert('BBB');
+    newLinkList.insert('CCC');
+
+    expect(newLinkList.head.value).toStrictEqual('CCC');
+    expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
+  });
 });
 
-it('Add to empty list', () => {
-  const newLinkList = new LinkedList();
 
-  newLinkList.insert('AAA');
+it('Add to end of empty list', () => {
+  const newLinkList = new LinkedList();
+  newLinkList.append('AAA');
 
   expect(newLinkList.head.value).toStrictEqual('AAA');
 });
 
-it('Change head of list, while keeping all Nodes', () => {
-  const newLinkList = new LinkedList();
 
-  newLinkList.insert('BBB');
-  newLinkList.insert('CCC');
+// it('Add to end of list with preexisting Nodes', () => {
+//   const newLinkList = new LinkedList();
+//   newLinkList.insert('AAA');
+//   newLinkList.insert('BBB');
 
-  expect(newLinkList.head.value).toStrictEqual('CCC');
-  expect(newLinkList.head.next.value).toStrictEqual('BBB');
-});
+//   newLinkList.append('CCC');
 
-it('Add to end of empty list', () => {
-  const newLinkList = new LinkedList();
-  newLinkList.append('DDD');
-  expect(newLinkList.head.value).toStrictEqual('DDD');
-});
+//   expect(newLinkList.head.value).toStrictEqual('BBB');
+//   expect(newLinkList.head.next.value).toStrictEqual('AAA');
 
-it('Add to end of list with preexisting Nodes', () => {
-  const newLinkList = new LinkedList();
-  newLinkList.insert('AAA');
-  newLinkList.insert('BBB');
-
-  newLinkList.append('CCC');
-
-  expect(newLinkList.head.value).toStrictEqual('BBB');
-  expect(newLinkList.head.next.value).toStrictEqual('AAA');
-
-  expect(newLinkList.head.next.next.value).toStrictEqual('CCC');
-  expect(newLinkList.head.next.next.next).toBe(null);
-});
+//   expect(newLinkList.head.next.next.value).toStrictEqual('CCC');
+//   expect(newLinkList.head.next.next.next).toBe(null);
+// });
