@@ -1,6 +1,7 @@
 'use strict';
 
 class Nodes {
+
   constructor(value, next = null) {
     this.value = value;
     this.next = next;
@@ -8,13 +9,13 @@ class Nodes {
 }
 
 class LinkedList {
+
   constructor() {
     this.head = null;
   }
 
   insert(value) {
     this.head = new Nodes(value, this.head);
-
   }
 
   toString() {
@@ -23,16 +24,30 @@ class LinkedList {
 
     while (current) {
       str += `{ ${current.value} } -> `;
+
       current = current.next;
     }
-    console.log(str + 'NULL');
+
     return str + 'NULL';
   }
 
-  includes(value){
-    let node = this.head
+  includes(value) {
+    let headNode = this.head;
 
-    while
+    if(headNode.value === value){
+      return true;
+    }
+
+    while(headNode.value !== null){
+      headNode = headNode.next;
+
+      if(headNode === value){
+
+        return true;
+      }
+
+      return false;
+    }
   }
 }
 
@@ -69,4 +84,9 @@ it('should insert before', () => {
   list.insert('CCC');
 
   expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+});
+
+it('should return true or false if the value is in the list', () => {
+  expect(newLinkList.includes('CCC')).toStrictEqual(true);
+  expect(newLinkList.includes('DDD')).toStrictEqual(false);
 });
