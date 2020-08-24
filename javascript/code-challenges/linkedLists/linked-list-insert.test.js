@@ -1,7 +1,5 @@
 'use strict';
 
-let string = [];
-
 class Nodes {
   constructor(value, next = null) {
     this.value = value;
@@ -20,27 +18,17 @@ class LinkedList {
     console.log(pushValue);
   }
 
-  append(value) {
-    const newNode = new Nodes(value);
+  toString() {
+    let str = '';
+    let current = this.head;
 
-    if(!this.head){
-      this.head = newNode;
-      return;
+    while (current) {
+      str += `{ ${current.value} } -> `;
+      current = current.next;
     }
-
-    let thisNode = this.head;
-
-    while(thisNode.next){
-      thisNode = thisNode.next;
-    }
-
-    thisNode.next = newNode;
-    let pushValue = this.head.value.toString();
-    string.push(pushValue);
+    console.log(str + 'NULL');
+    return str + 'NULL';
   }
-
-
-
 }
 
 
@@ -71,11 +59,22 @@ describe('Tests from link-list.test.js', () => {
     expect(newLinkList.head.value).toStrictEqual('CCC');
     expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
   });
+
+  it('should insert before', () => {
+    const list = new LinkedList();
+
+    list.insert('AAA');
+    list.insert('BBB');
+    list.insert('CCC');
+
+    expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+  });
 });
 
 
 it('Add to end of empty list', () => {
   const newLinkList = new LinkedList();
+
   newLinkList.append('AAA');
 
   expect(newLinkList.head.value).toStrictEqual('AAA');

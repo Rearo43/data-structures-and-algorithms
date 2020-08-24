@@ -1,7 +1,5 @@
 'use strict';
 
-let string = [];
-
 class Nodes {
   constructor(value, next = null) {
     this.value = value;
@@ -16,29 +14,26 @@ class LinkedList {
 
   insert(value) {
     this.head = new Nodes(value, this.head);
-    let pushValue = this.head.value.toString();
-    console.log(pushValue);
+
   }
 
-  append(value) {
-    const newNode = new Nodes(value);
+  toString() {
+    let str = '';
+    let current = this.head;
 
-    if(!this.head){
-      this.head = newNode;
-      return;
+    while (current) {
+      str += `{ ${current.value} } -> `;
+      current = current.next;
     }
-
-    let thisNode = this.head;
-
-    while(thisNode.next){
-      thisNode = thisNode.next;
-    }
-
-    thisNode.next = newNode;
-    let pushValue = this.head.value.toString();
-    string.push(pushValue);
+    console.log(str + 'NULL');
+    return str + 'NULL';
   }
 
+  includes(value){
+    let node = this.head
+
+    while
+  }
 }
 
 
@@ -46,7 +41,7 @@ class LinkedList {
 ------------------------------------------------------------------------------------------------ */
 const newLinkList = new LinkedList();
 
-it('should insantiate', () => {
+it('should insatiate', () => {
   expect(newLinkList).toBeDefined();
 });
 
@@ -58,11 +53,20 @@ it('Add to empty list', () => {
 });
 
 
-it('Change head of list, while keeping all Nodes', () => {
+it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', () => {
   newLinkList.insert('AAA');
   newLinkList.insert('BBB');
   newLinkList.insert('CCC');
 
   expect(newLinkList.head.value).toStrictEqual('CCC');
   expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
+});
+
+it('should insert before', () => {
+  const list = new LinkedList();
+  list.insert('AAA');
+  list.insert('BBB');
+  list.insert('CCC');
+
+  expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
 });
