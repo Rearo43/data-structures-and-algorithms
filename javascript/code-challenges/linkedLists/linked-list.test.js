@@ -77,6 +77,7 @@ it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', (
   expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
 });
 
+
 it('should insert before', () => {
   const list = new LinkedList();
   list.insert('AAA');
@@ -85,6 +86,7 @@ it('should insert before', () => {
 
   expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
 });
+
 
 it('should return true or false if the value is in the list', () => {
   expect(newLinkList.includes('CCC')).toStrictEqual(true);

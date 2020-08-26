@@ -49,31 +49,6 @@ class LinkedList {
       return false;
     }
   }
-
-  insertBefore(target, newValue) {
-    let current = this.head;
-
-    if (!current) {
-      return;
-    }
-
-    if(current.value === target) {
-      this.insert(newValue);
-
-      return;
-    }
-
-    while(current.next) {
-      if(current.next.value !== target) {
-        current = current.next;
-      }
-
-      else {
-        current.next = new Nodes(newValue, current.next);
-        break;
-      }
-    }
-  }
 }
 
 
@@ -121,14 +96,14 @@ describe('Tests from link-list.test.js', () => {
 });
 
 
-it('should insert before', () => {
-  const list = new LinkedList();
-  list.insert('apples');
-  list.insert('dates');
-  list.insert('bananas');
-  list.insertBefore('apples', 'cucumbers');
-  expect(list.toString()).toBe('{ bananas } -> { dates } -> { cucumbers } -> { apples } -> NULL');
+it('Add to end of empty list', () => {
+  const newLinkList = new LinkedList();
+
+  newLinkList.append('AAA');
+
+  expect(newLinkList.head.value).toStrictEqual('AAA');
 });
+
 
 // it('Add to end of list with preexisting Nodes', () => {
 //   const newLinkList = new LinkedList();
