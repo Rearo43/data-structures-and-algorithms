@@ -1,3 +1,5 @@
+'use strict';
+
 function brackets(str){
   let curl = 0;
   let square = 0;
