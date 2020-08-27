@@ -49,6 +49,56 @@ class LinkedList {
       return false;
     }
   }
+
+  insertBefore(target, newValue) {
+    let current = this.head;
+
+    if (!current) {
+      return;
+    }
+
+    if(current.value === target) {
+      this.insert(newValue);
+
+      return;
+    }
+
+    while(current.next) {
+      if(current.value !== target) {
+        current = current.next;
+      }
+
+      else {
+        current.next = new Nodes(newValue, current.next);
+        break;
+      }
+    }
+  }
+
+  insertAfter(target, newValue) {
+    let current = this.head;
+
+    if (!current) {
+      return;
+    }
+
+    if(current.value === target) {
+      this.insert(newValue);
+
+      return;
+    }
+
+    while(current.next) {
+      if(current.next.value !== target) {
+        current = current.next;
+      }
+
+      else {
+        current.next = new Nodes(newValue, current.next);
+        break;
+      }
+    }
+  }
 }
 
 
@@ -96,14 +146,28 @@ describe('Tests from link-list.test.js', () => {
 });
 
 
-it('Add to end of empty list', () => {
-  const newLinkList = new LinkedList();
+it('should insert before', () => {
+  const list = new LinkedList();
 
-  newLinkList.append('AAA');
+  list.insert('AAA');
+  list.insert('BBB');
+  list.insert('CCC');
+  list.insertBefore('AAA', 'DDD');
 
-  expect(newLinkList.head.value).toStrictEqual('AAA');
+  expect(list.toString()).toBe('{ CCC } -> { BBB } -> { DDD } -> { AAA } -> NULL');
 });
 
+
+it('should insert before', () => {
+  const list = new LinkedList();
+
+  list.insert('AAA');
+  list.insert('BBB');
+  list.insert('CCC');
+  list.insertAfter('AAA', 'DDD');
+
+  expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> { DDD } -> NULL');
+});
 
 // it('Add to end of list with preexisting Nodes', () => {
 //   const newLinkList = new LinkedList();
@@ -118,3 +182,4 @@ it('Add to end of empty list', () => {
 //   expect(newLinkList.head.next.next.value).toStrictEqual('CCC');
 //   expect(newLinkList.head.next.next.next).toBe(null);
 // });
+
