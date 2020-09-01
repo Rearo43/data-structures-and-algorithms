@@ -175,3 +175,21 @@ it('post-order traversal', ()=>{
 
   expect(tree.postOrder()).toEqual([ 'CCC', 'BBB', 'AAA']);
 });
+
+const tree = new BinarySearchTree(aaa);
+
+it('add node plus left side', () =>{
+  tree.add(2);
+
+  expect(tree.root.value).toStrictEqual(43);
+  expect(tree.root.left.value).toStrictEqual(2);
+  expect(tree.root.right).toBeNull;
+});
+
+
+it('add right side', () =>{
+  tree.add(50);
+
+  expect(tree.root.right.value).toStrictEqual(50);
+  expect(tree.root.left.value).toStrictEqual(2);
+});
