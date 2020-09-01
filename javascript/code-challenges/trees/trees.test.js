@@ -109,25 +109,32 @@ class BinarySearchTree extends BinaryTree {
   }
 
   contains(value){
+    let node = this.root;
+    let contain = false;
+
     if(this.root === null){
       return null;
     }
-    let current = this.root;
-    let containsVal = false;
 
-    while (current && !containsVal){
-      if (value < current.value){
-        current = current.left;
-      } else if (value > current.value){
-        current = current.right;
-      } else {
-        containsVal = true;
+    while (node && !contain){
+      if (value < node.value){
+        node = node.left;
+      }
+
+      if (value > node.value){
+        node = node.right;
+      }
+
+      else {
+        contain = true;
       }
     }
-    if (!containsVal){
+
+    if (!contain){
       return false;
     }
-    return current;
+
+    return node;
   }
 }
 
@@ -161,6 +168,7 @@ it('in-order traversal', ()=>{
 
   expect(tree.inOrder()).toEqual([ 'CCC', 'AAA', 'BBB']);
 });
+
 
 it('post-order traversal', ()=>{
   const tree = new BinarySearchTree(aaa);
