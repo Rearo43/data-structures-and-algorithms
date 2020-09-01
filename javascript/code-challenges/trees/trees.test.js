@@ -193,12 +193,3 @@ it('add right side', () =>{
   expect(tree.root.right.value).toStrictEqual(50);
   expect(tree.root.left.value).toStrictEqual(2);
 });
-
-
-it('should build from array', () =>{
-  const arr = [10, 5,15,3,7,12,17];
-  const tree = new BinarySearchTree();
-  tree.fromArray(arr);
-  expect(tree.inOrder()).toBe([3,5,7,10,12,15,17]);
-
-});
