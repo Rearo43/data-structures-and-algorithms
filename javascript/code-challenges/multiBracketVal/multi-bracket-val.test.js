@@ -1,16 +1,16 @@
 'use strict';
 
 function brackets(str){
-  let curl = 0;
-  let square = 0;
-  let circle = 0;
+  let curl = 0; //1
+  let square = 0; //1
+  let circle = 0; //1
 
-  if(!str) {
+  if(!str) { //1
     return false;
   }
 
-  for (let i = 0; i < str.length; i++) {
-    let place = str[i];
+  for (let i = 0; i < str.length; i++) { //7 steps x string length aka N
+    let place = str[i]; // Always one var
 
     if (place === '{') {curl++;}
     if (place === '[') {square++;}
@@ -36,10 +36,12 @@ it('Should return true if all have a counterpart return false for everything els
   let str2 = '{}{Code}[Fellows](())(](((((({{{{}}{{{))';
   let str3 = '[]';
   let str4 = '';
+  let str5 = '}{';
 
   expect(brackets(str)).toStrictEqual(true);
   expect(brackets(str1)).toStrictEqual(false);
   expect(brackets(str2)).toStrictEqual(false);
   expect(brackets(str3)).toStrictEqual(true);
   expect(brackets(str4)).toStrictEqual(false);
+  expect(brackets(str5)).toStrictEqual(false);
 });
