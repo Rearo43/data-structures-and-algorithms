@@ -83,7 +83,7 @@ class BinaryTree {
       }
 
       max(root.left);
-      max(root.left);
+      max(root.right);
     }
 
     max(this.root);
@@ -174,31 +174,6 @@ const fourth = new Nodes(430);
 const fifth = new Nodes(200);
 const treeTwo = new BinarySearchTree(new Nodes(17, fourth, fifth));
 
-// it('add node plus left side', () =>{
-//   tree.add(2);
-
-//   expect(tree.root.value).toStrictEqual(43);
-//   expect(tree.root.left.value).toStrictEqual(2);
-//   expect(tree.root.right).toBeNull;
-// });
-
-
-// it('add right side', () =>{
-//   tree.add(50);
-
-//   expect(tree.root.right.value).toStrictEqual(50);
-//   expect(tree.root.left.value).toStrictEqual(2);
-// });
-
-
-// it('should build from array', () =>{
-//   const arr = [10, 5,15,3,7,12,17];
-//   const tree = new BinarySearchTree();
-//   tree.fromArray(arr);
-//   expect(tree.inOrder()).toBe([3,5,7,10,12,15,17]);
-
-// });
-
 it('Can successfully find the largest value in a tree', ()=>{
   expect(tree.maxVal()).toEqual(50);
 //   expect(treeTwo.maxVal()).toEqual(430);
@@ -208,4 +183,3 @@ it('empty tree equal null', ()=>{
   const tree = new BinarySearchTree();
   expect(tree.maxVal()).toBeNull;
 });
-
