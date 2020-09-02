@@ -13,4 +13,4 @@
 ### Approach & Efficiency
 
 ### Solution
-> ![White board](../../whiteboards/linkedList-Insert.png)
+> ![White board](../../whiteboards/linkedList-insert.png)
