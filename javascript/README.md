@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-    > [All Whiteboards](whiteboards)
+- [All Whiteboards](whiteboards)
 
 - [Array Binary Search](code-challenges/arrayBinarySearch)
 
