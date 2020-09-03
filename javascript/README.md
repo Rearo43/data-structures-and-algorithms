@@ -4,18 +4,24 @@
 
 ## Table of contents
 
-> [All Whiteboards](whiteboards)
+    > [All Whiteboards](whiteboards)
 
-- [Arrays](code-challenges/arrayReverse)
+- [Array Binary Search](code-challenges/arrayBinarySearch)
 
-- [Graphs](code-challenges/arrayShift)
+- [Array Reverse](code-challenges/arrayReverse)
 
-- [Linked Lists](code-challenges/linkLists)
+- [Array Shift](code-challenges/arrayShift)
 
-- [Stacks](code-challenges/stacks)
+- [Breadth First](code-challenges/breadthFirst)
 
-- [Queues](code-challenges/queues)
+- [Find MAx Value](code-challenges/findMaxValue)
+
+- [Insert Linked List](code-challenges/insertLL)
+
+- [Linked List](code-challenges/linkedList)
+
+- [Multi-Bracket Value](code-challenges/multiBracketVal)
+
+- [Stack and Queue](code-challenges/stackAndQueue)
 
 - [Trees](code-challenges/trees)
-
-- [Hash Tables](code-challenges/hashTables)
