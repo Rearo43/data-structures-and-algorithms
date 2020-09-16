@@ -1,5 +1,7 @@
 # `Merge Sort`    
-    
+> [code](merge-sort.test.js)
+
+## Pseudo Code
 _ALGORITHM Mergesort(arr)_
 
     DECLARE n <-- arr.length

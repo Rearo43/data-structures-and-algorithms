@@ -25,3 +25,6 @@
 - [Stack and Queue](code-challenges/stackAndQueue)
 
 - [Trees](code-challenges/trees)
+
+    ### Blogs
+        - [Merge Sort](code-challenges/mergeSort/BLOG.md)
