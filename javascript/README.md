@@ -14,7 +14,7 @@
 
 - [Breadth First](code-challenges/breadthFirst)
 
-- [Find MAx Value](code-challenges/findMaxValue)
+- [Find Max Value](code-challenges/findMaxValue)
 
 - [Insert Linked List](code-challenges/insertLL)
 
