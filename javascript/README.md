@@ -14,7 +14,7 @@
 
 - [Breadth First](code-challenges/breadthFirst)
 
-- [Find MAx Value](code-challenges/findMaxValue)
+- [Find Max Value](code-challenges/findMaxValue)
 
 - [Insert Linked List](code-challenges/insertLL)
 
@@ -25,3 +25,6 @@
 - [Stack and Queue](code-challenges/stackAndQueue)
 
 - [Trees](code-challenges/trees)
+
+    ### Blogs
+    - [Merge Sort](code-challenges/mergeSort/BLOG.md)
