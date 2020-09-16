@@ -8,11 +8,11 @@ function mergeSort(arr) {
     let left = arr.slice(0, mid);
     let right = arr.slice(mid, n);
 
-    console.log('left',left, '-----', 'right', right);
+    // console.log('left',left, '-----', 'right', right);
     mergeSort(left);
     mergeSort(right);
-    console.log(`DONEEEEE ${n}`);
-    merge(left, right, arr);
+    // console.log(`DONEEEEE ${n}`);
+    // merge(left, right, arr);
   }
 
 }
@@ -23,23 +23,29 @@ function merge(left, right, arr) {
   let k = 0;
 
   while(i < left.length && j < right.length) {
+
     if(left[i] <= right[j]) {
       arr[k] = left[i];
 
-      i = j + 1;
+      i = i + 1;
     } else {
       arr[k] = right[i];
 
-      k = k + 1;
+      j = j + 1;
     }
-  }
 
-  if(i = left.length) {
-    
+    k = k + 1;
+  }
+    console.log(`RIGHT AFTER WHILE---${arr}`);
+  if(i === left.length) {
+    arr.push(right);
   } else {
-
+    arr.push(right);
   }
+    console.log(`BEFORE RETURN---${arr}`);
+  return arr;
 }
+
 
 /* TEST for merge-sort.test.js below
 ------------------------------------------------------------------------------------------------ */
@@ -49,3 +55,10 @@ it('should push an array into mergeSort', () => {
 
   expect(mergeSort(arr)).toEqual([8,4,23,42,16,15]);
 });
+
+it('mergeSort to be called a total of 5 times', () => {
+    let arr = [8,4,23,42,16,15];
+  
+    expect(mergeSort(arr)).toHaveBeenCalledTimes(x);
+  });
+ 
