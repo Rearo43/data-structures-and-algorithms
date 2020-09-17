@@ -1,6 +1,6 @@
 # `Merge Sort`    
 > [code](merge-sort.test.js)
-
+> ![White board](../../whiteboards/merge-sort.jpeg)
 ## Pseudo Code
 _ALGORITHM Mergesort(arr)_
 
