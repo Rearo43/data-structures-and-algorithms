@@ -3,14 +3,15 @@
 function mergeSort(arr) {
   let n = arr.length;
 
+  if()
+
   if(n > 1) {
     let mid = Math.floor(n/2);
     let left = arr.slice(0, mid);
     let right = arr.slice(mid, n);
 
     // console.log('left',left, '-----', 'right', right);
-    mergeSort(left);
-    mergeSort(right);
+    return (mergeSort(left), mergeSort(right));
     // console.log(`DONEEEEE ${n}`);
     // merge(left, right, arr);
   }
