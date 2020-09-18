@@ -1,5 +1,5 @@
 # `Quick Sort`    
-> [code](merge-sort.test.js)
+> [code](quick-sort.test.js)
 
 
             Compare pivot to L when L> pivot STOP and switch the values.
