@@ -54,25 +54,6 @@ class BinaryTree {
 
 
   }
-
-//   postOrder() {
-
-//     const output = [];
-
-//     function _postOrder(root){
-//       if(!root){
-//         return;
-//       }
-//       _postOrder(root.left);
-//       _postOrder(root.right);
-//       output.push(root.value);
-//     }
-
-//     _postOrder(this.root);
-//     return output;
-
-//   }
-
 }
 
 function treeIntersec(treeOne, treeTwo) {
