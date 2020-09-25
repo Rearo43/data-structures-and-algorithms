@@ -1,4 +1,4 @@
-# `Array Shift`
+# `Repeated Word`
 > [code](repeated-word.test.js)
 ### Challenge
 - [x] Takes in an array plus the value to be added (outside of array)
