@@ -1,5 +1,5 @@
 # `Array Shift`
-> [code](array-shift.test.js)
+> [code](repeated-word.test.js)
 ### Challenge
 - [x] Takes in an array plus the value to be added (outside of array)
 
