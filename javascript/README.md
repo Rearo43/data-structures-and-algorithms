@@ -26,13 +26,13 @@
 
 - [Left Join](code-challenges/leftJoin)
 
-- [Linked List](code-challenges/linkedList)
+- [Linked Lists](code-challenges/linkedLists)
 
-- [Merge Sort](code-challenges/mergeSort)
+- [Merge Sort](code-challenges/mergeSort) //Blog
 
 - [Multi-Bracket Value](code-challenges/multiBracketVal)
 
-- [Quick Sort](code-challenges/quickSort)
+- [Quick Sort](code-challenges/quickSort) //Blog
 
 - [Repeated Word](code-challenges/repeatedWord)
 
