@@ -15,24 +15,6 @@ class BinaryTree {
     this.root = root;
   }
 
-//   preOrder() {
-
-//     const output = [];
-
-//     function _preOrder(root){
-//       if(!root){
-//         return;
-//       }
-//       output.push(root.value);
-//       _preOrder(root.left);
-//       _preOrder(root.right);
-//     }
-
-//     _preOrder(this.root);
-//     return output;
-
-//   }
-
   inOrder() {
 
     const output = [];
@@ -42,6 +24,27 @@ class BinaryTree {
         return;
       }
       _inOrder(root.left);
+      output.push(root.value);
+      _inOrder(root.right);
+    }
+
+    _inOrder(this.root);
+    return output;
+
+
+  }
+
+  inOrderAlt() {
+
+    const output = [];
+
+    function _inOrder(root){
+      if(!root){
+        return;
+      }
+      _inOrder(root.left);
+
+      for(let i = 0; i < )
       output.push(root.value);
       _inOrder(root.right);
     }
@@ -69,6 +72,31 @@ class BinaryTree {
 //     return output;
 
 //   }
+
+}
+
+function treeIntersec(treeOne, treeTwo) {
+    let treeOneArr = treeOne.inOrder;
+    const output = [];
+
+    function _inOrderAlt(root){
+      if(!root){
+        return;
+      }
+      _inOrderAlt(root.left);
+
+      for(let i = 0; i < treeOneArr.length; i++) {
+
+          if(root.value === treeOneArr[i]) {
+              output.push(root.value);
+          }
+      }
+      _inOrderAlt(root.right);
+    }
+
+    _inOrderAlt(this.root);
+    return output;
+
 
 }
 
