@@ -44,7 +44,7 @@ class BinaryTree {
       }
       _inOrder(root.left);
 
-      for(let i = 0; i < )
+      for(let i = 0; i < ) // Still working on concept
       output.push(root.value);
       _inOrder(root.right);
     }
@@ -54,25 +54,6 @@ class BinaryTree {
 
 
   }
-
-//   postOrder() {
-
-//     const output = [];
-
-//     function _postOrder(root){
-//       if(!root){
-//         return;
-//       }
-//       _postOrder(root.left);
-//       _postOrder(root.right);
-//       output.push(root.value);
-//     }
-
-//     _postOrder(this.root);
-//     return output;
-
-//   }
-
 }
 
 function treeIntersec(treeOne, treeTwo) {
