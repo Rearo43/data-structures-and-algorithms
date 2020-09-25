@@ -17,3 +17,4 @@
     The second for loop starts at the index position previously targeted as the middle (let i = middle; i < arr.length) and continues pushing the second half of the given array into the new array.
 
 ### Solution
+> ![White board](../../whiteboards/repeated-word.png)
