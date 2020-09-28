@@ -14,7 +14,7 @@ let arrEx = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 
 //   if(target !== value){
 //     let left = 0;
-    
+
 
 //     if(target < value){
 //       index = Math.ceil(index / 2);
@@ -49,7 +49,7 @@ function findTarget(arr, target) {
     } else {
       return -1;
     }
-  } else if (arr[midValue] === target) {
+  } else if (midValue === target) {
     return midIndex;
   } else {
     if(arr[midValue] > target) {
@@ -78,22 +78,30 @@ xit('check', () => {
   let value = 5;
   expect(split(arr, value)).toStrictEqual(2);
 });
+describe('Edge cases regarding empty and arrays with length of one', () => {
 
-it('Empty array', () => {
-  let arr = [];
-  let target = 3;
-  expect(findTarget(arr, target)).toStrictEqual(-1);
+  it('Empty array', () => {
+    let arr = [];
+    let target = 3;
+    expect(findTarget(arr, target)).toStrictEqual(-1);
+  });
+
+  it('Target in array with length of one', () => {
+    let arr = [3];
+    let target = 3;
+    expect(findTarget(arr, target)).toStrictEqual(0);
+  });
+
+  it('Target NOT in array with length of one', () => {
+    let arr = [3];
+    let target = 5;
+    expect(findTarget(arr, target)).toStrictEqual(-1);
+  });
 });
 
-it('Target in array with length of one', () => {
-  let arr = [3];
-  let target = 3;
-  expect(findTarget(arr, target)).toStrictEqual(0);
-});
-
-it('Target NOT in array with length of one', () => {
-  let arr = [3];
-  let target = 5;
-  expect(findTarget(arr, target)).toStrictEqual(-1);
+it('Target is value of first split', () => {
+  let arr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+  let target = 12;
+  expect(findTarget(arr, target)).toStrictEqual(9);
 });
 
