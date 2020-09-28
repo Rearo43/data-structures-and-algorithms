@@ -31,28 +31,38 @@ class LinkedList {
     return str + 'NULL';
   }
 
-  includes(value) {
-    let headNode = this.head;
-
-    if(headNode.value === value){
-      return true;
+  kthFromEnd(k) {
+    if(!this.head) {
+      return 'Exception: Empty List.';
+    } else if(k < 0 && isNaN(k)) {
+      return 'Exception: Needs to be a numeric value greater or equal to zero.';
     }
 
-    while(headNode.value !== null){
-      headNode = headNode.next;
+    let nodeCount = 0;
+    let current = this.head;
 
-      if(headNode === value){
-
-        return true;
-      }
-
-      return false;
+    while(current.next) {
+      nodeCount++;
+      current = current.next;
+      console.log(current);
     }
+
+    let indexK = nodeCount - k;
+
+    current = this.head;
+    nodeCount = 0;
+
+    while(nodeCount < indexK) {
+      nodeCount++;
+      current = current.next;
+    }
+
+    return current.value;
   }
 }
 
 
-/* TEST for linked-list-insert.test.js below
+/* TEST for link-list-kth-from-end.test.js below
 ------------------------------------------------------------------------------------------------ */
 describe('Tests from link-list.test.js', () => {
   const newLinkList = new LinkedList();
@@ -87,14 +97,22 @@ describe('Tests from link-list.test.js', () => {
 
     expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
   });
-
-
-  it('should return true or false if the value is in the list', () => {
-    expect(newLinkList.includes('CCC')).toStrictEqual(true);
-    expect(newLinkList.includes('DDD')).toStrictEqual(false);
-  });
 });
 
+const newLinkList = new LinkedList();
 
+it('should insert before', () => {
+  newLinkList.insert('AAA');
+  newLinkList.insert('BBB');
+  newLinkList.insert('CCC');
 
+  expect(newLinkList.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+});
 
+it('Find Kth from end', () => {
+  // newLinkList.kthFromEnd(-1);
+//   expect(newLinkList.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+  expect(newLinkList.kthFromEnd(0)).toBe('AAA');
+  expect(newLinkList.kthFromEnd(1)).toBe('BBB');
+  expect(newLinkList.kthFromEnd(2)).toBe('CCC');
+});
