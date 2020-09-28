@@ -34,7 +34,7 @@ class LinkedList {
   kthFromEnd(k) {
     if(!this.head) {
       return 'Exception: Empty List.';
-    } else if(k < 0 && isNaN(k)) {
+    } else if(isNaN(k)) {
       return 'Exception: Needs to be a numeric value greater or equal to zero.';
     }
 
@@ -110,9 +110,29 @@ it('should insert before', () => {
 });
 
 it('Find Kth from end', () => {
-  // newLinkList.kthFromEnd(-1);
-//   expect(newLinkList.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
   expect(newLinkList.kthFromEnd(0)).toBe('AAA');
   expect(newLinkList.kthFromEnd(1)).toBe('BBB');
   expect(newLinkList.kthFromEnd(2)).toBe('CCC');
+});
+
+describe('Edge Cases: Empty list or not a number', () => {
+  const newLinkList = new LinkedList();
+
+  it('Empty list', () => {
+
+    expect(newLinkList.toString()).toBe('NULL');
+  });
+
+  it('Empty list Kth to the end', () => {
+
+    expect(newLinkList.kthFromEnd(0)).toBe('Exception: Empty List.');
+  });
+
+  it('K value not a number', () => {
+    newLinkList.insert('AAA');
+    newLinkList.insert('BBB');
+
+    expect(newLinkList.kthFromEnd('r')).toBe('Exception: Needs to be a numeric value greater or equal to zero.');
+  });
+
 });
