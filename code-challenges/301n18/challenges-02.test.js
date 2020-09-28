@@ -107,7 +107,7 @@ describe('Testing challenge 2', () => {
     const a = 'This is my story.';
     const b = appendTheEnd(a);
 
-    expect(a).toStrictEqual('This is my story.');
+    expect(a).('This is my story.');
     expect(b).toStrictEqual('This is my story. The end.');
   });
 });
