@@ -54,41 +54,47 @@ class LinkedList {
 
 /* TEST for linked-list-insert.test.js below
 ------------------------------------------------------------------------------------------------ */
-const newLinkList = new LinkedList();
+describe('Tests from link-list.test.js', () => {
+  const newLinkList = new LinkedList();
 
-it('should insatiate', () => {
-  expect(newLinkList).toBeDefined();
+  it('should insatiate', () => {
+    expect(newLinkList).toBeDefined();
+  });
+
+
+  it('Add to empty list', () => {
+    newLinkList.insert('AAA');
+
+    expect(newLinkList.head.value).toStrictEqual('AAA');
+  });
+
+
+  it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', () => {
+    newLinkList.insert('AAA');
+    newLinkList.insert('BBB');
+    newLinkList.insert('CCC');
+
+    expect(newLinkList.head.value).toStrictEqual('CCC');
+    expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
+  });
+
+
+  it('should insert before', () => {
+    const list = new LinkedList();
+    list.insert('AAA');
+    list.insert('BBB');
+    list.insert('CCC');
+
+    expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+  });
+
+
+  it('should return true or false if the value is in the list', () => {
+    expect(newLinkList.includes('CCC')).toStrictEqual(true);
+    expect(newLinkList.includes('DDD')).toStrictEqual(false);
+  });
 });
 
 
-it('Add to empty list', () => {
-  newLinkList.insert('AAA');
-
-  expect(newLinkList.head.value).toStrictEqual('AAA');
-});
 
 
-it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', () => {
-  newLinkList.insert('AAA');
-  newLinkList.insert('BBB');
-  newLinkList.insert('CCC');
-
-  expect(newLinkList.head.value).toStrictEqual('CCC');
-  expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
-});
-
-
-it('should insert before', () => {
-  const list = new LinkedList();
-  list.insert('AAA');
-  list.insert('BBB');
-  list.insert('CCC');
-
-  expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
-});
-
-
-it('should return true or false if the value is in the list', () => {
-  expect(newLinkList.includes('CCC')).toStrictEqual(true);
-  expect(newLinkList.includes('DDD')).toStrictEqual(false);
-});
