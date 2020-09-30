@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Edges {
   constructor(node1, node2, weight = 1) {
@@ -51,7 +51,7 @@ class Graph {
     return this.vertices.length;
   }
 
-  //////// added new methods to the Graph class , I use it in the getEdge function
+  //added new methods to the Graph class , I use it in the getEdge function
   getNeighborsByValue(vertexVal) {
     let vert = this.vertices.filter((v) => v.val === vertexVal);
     if (vert.length > 0) {
@@ -65,8 +65,6 @@ class Graph {
     let vert = this.vertices.filter((v) => v.val === vertexVal);
     return vert ? vert[0] : null;
   }
-
-  //////////////////////////////////////////////////
 }
 
 function getEdges(arr, graph) {
@@ -84,7 +82,7 @@ function getEdges(arr, graph) {
       let possibleEdge = neigbors.filter(
         (edge) => edge.destination.val === arr[j]
       );
-      //  console.log(possibleEdge[0].weight)
+
       if (possibleEdge.length > 0) {
         price += possibleEdge[0].weight;
       } else {
@@ -97,22 +95,36 @@ function getEdges(arr, graph) {
   return price;
 }
 
+/* TEST for graph-get-edge.test.js below
+------------------------------------------------------------------------------------------------ */
 let graph = new Graph();
 
-let austin = graph.addVertex("Austin");
-let dallas = graph.addVertex("Dallas");
-let huston = graph.addVertex("Huston");
-let sverdlovs = graph.addVertex("Sverdlovsk");
-let chernovci = graph.addVertex("Chernovci");
-let hawaii = graph.addVertex("Hawaii");
+let AAA = graph.addVertex("AAA");
+let BBB = graph.addVertex("BBB");
+let CCC = graph.addVertex("CCC");
+let DDD = graph.addVertex("DDD");
+let EEE = graph.addVertex("EEE");
+let FFF = graph.addVertex("FFF");
 
-graph.addEdge(austin, sverdlovs, 100);
+graph.addEdge(AAA, DDD, 100);
+graph.addEdge(BBB, CCC, 75);
+graph.addEdge(DDD, AAA, 50);
+graph.addEdge(AAA, EEE, 20);
+graph.addEdge(AAA, FFF, 15);
+graph.addEdge(DDD, EEE, 7);
 
-graph.addEdge(austin, chernovci, 20);
-graph.addEdge(austin, hawaii, 15);
-graph.addEdge(sverdlovs, chernovci, 7);
+it("return price total for direct connections", () => {
+  expect(getEdges(["AAA", "DDD", "EEE"], graph)).toEqual(107);
+  expect(getEdges(["DDD", "AAA", "EEE"], graph)).toEqual(70);
+    expect(getEdges(["BBB", "CCC"], graph)).toEqual(75);
+});
 
-getEdges(["Austin", "Sverdlovsk", "Chernovci"], graph);
+it("return price OF 0 for lack of direct connections", () => {
+  expect(getEdges(["AAA", "BBB", "CCC"], graph)).toEqual(0);
+  expect(getEdges(["CCC", "DDD", "BBB"], graph)).toEqual(0);
+    expect(getEdges(["BBB", "FFF"], graph)).toEqual(0);
+});
+
 // getEdges([Austin,Sverdlovsk,Chernovci])
 
 // graph.getNeigbors(nodeKate)
