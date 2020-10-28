@@ -48,6 +48,8 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
 /* TEST for linked-list.test.js below
 ------------------------------------------------------------------------------------------------ */
 const newLinkList = new LinkedList();
@@ -72,8 +74,8 @@ it("Insert multiple Nodes, while keeping previous Nodes (Head should change)", (
 });
 
 const list = new LinkedList();
-it("should insert before", () => {
 
+it("should insert before", () => {
   list.insert("AAA");
   list.insert("BBB");
   list.insert("CCC");
