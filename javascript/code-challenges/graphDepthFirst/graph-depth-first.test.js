@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Edges {
   constructor(node1, node2, weight = 1) {

@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 class Nodes {
   //Vertex
@@ -24,7 +25,7 @@ class Graph {
 
   addNode(node) {
     // const newNode = new Nodes(node.value);
-    
+
     return this.vertex.add(new Nodes(node.value));
 
     // return newNode;
@@ -43,7 +44,7 @@ class Graph {
     });
 
     if (nodeOO === undefined || nodeDD === undefined) {
-      throw new Error('Node(s) Not in Graph');
+      throw new Error("Node(s) Not in Graph");
     }
 
     let myEdges = new Edge(nodeOO, nodeDD);
@@ -88,24 +89,24 @@ class Graph {
 /* TEST for graph.test.js below
 ------------------------------------------------------------------------------------------------ */
 const graph = new Graph();
-let nodeAAA = new Nodes('AAA');
-let nodeBBB = new Nodes('BBB');
-let nodeCCC = new Nodes('CCC');
-let nodeDDD = new Nodes('DDD');
-let nodeEEE = new Nodes('EEE');
-let nodeFFF = new Nodes('FFF');
-let nodeGGG = new Nodes('GGG');
+let nodeAAA = new Nodes("AAA");
+let nodeBBB = new Nodes("BBB");
+let nodeCCC = new Nodes("CCC");
+let nodeDDD = new Nodes("DDD");
+let nodeEEE = new Nodes("EEE");
+let nodeFFF = new Nodes("FFF");
+let nodeGGG = new Nodes("GGG");
 // it('testing getNeighbors ', () => {
 //   graph.addNode(nodeGGG);
 //   graph.addEdge(nodeGGG, nodeBBB);
 //   expect(graph.getNeighbors(nodeGGG)).toEqual(1);
 // });
 
-it('graph working', () => {
+it("graph working", () => {
   expect(graph.size()).toStrictEqual(0);
 });
 
-it('add one node to graph', () => {
+it("add one node to graph", () => {
   graph.addNode(nodeAAA);
   graph.addNode(nodeBBB);
   graph.addNode(nodeCCC);
@@ -113,8 +114,8 @@ it('add one node to graph', () => {
   expect(graph.size()).toStrictEqual(3);
 });
 
-it('proof of added edge', () => {
+it("proof of added edge", () => {
   graph.addEdge(nodeAAA, nodeCCC);
 
-  expect(graph.getNeighbors(nodeAAA)).toStrictEqual(['CCC', null]);
+  expect(graph.getNeighbors(nodeAAA)).toStrictEqual(["CCC", null]);
 });

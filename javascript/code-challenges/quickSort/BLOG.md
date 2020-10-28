@@ -1,6 +1,6 @@
-# `Quick Sort`    
-> [code](quick-sort.test.js)
+# `Quick Sort`
 
+> [code](quick-sort.test.js)
 
             Compare pivot to L when L> pivot STOP and switch the values.
             [-1, 99, 7, 30, 39, 4, 8]
@@ -27,7 +27,7 @@
             [-1, 4] Kicks out because L === *
               R  L*
                             [99, 30, 39]--> [30, 39, 99]
-                            L.   R.   *        
+                            L.   R.   *
                             [30, 39, 99]
                             LR   *
                             [30, 39, 99] Kicks out because L === *

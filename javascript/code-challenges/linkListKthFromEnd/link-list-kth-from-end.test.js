@@ -33,7 +33,7 @@ class LinkedList {
   kthFromEnd(k) {
     if (!this.head) {
       return "Exception: Empty List.";
-    } else if (isNaN(k)) {
+    } else if (isNaN(k) || k < 0) {
       return "Exception: Needs to be a numeric value greater or equal to zero.";
     }
 
@@ -66,10 +66,6 @@ class LinkedList {
 describe("Tests from link-list.test.js", () => {
   const newLinkList = new LinkedList();
 
-  it("should insatiate", () => {
-    expect(newLinkList).toBeDefined();
-  });
-
   it("Add to empty list", () => {
     newLinkList.insert("AAA");
 
@@ -91,7 +87,9 @@ describe("Tests from link-list.test.js", () => {
     list.insert("BBB");
     list.insert("CCC");
 
-    expect(list.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
+    expect(list.toString()).toStrictEqual(
+      "{ CCC } -> { BBB } -> { AAA } -> NULL"
+    );
   });
 });
 
@@ -102,31 +100,37 @@ it("should insert before", () => {
   newLinkList.insert("BBB");
   newLinkList.insert("CCC");
 
-  expect(newLinkList.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
+  expect(newLinkList.toString()).toStrictEqual(
+    "{ CCC } -> { BBB } -> { AAA } -> NULL"
+  );
 });
 
 it("Find Kth from end", () => {
-  expect(newLinkList.kthFromEnd(0)).toBe("AAA");
-  expect(newLinkList.kthFromEnd(1)).toBe("BBB");
-  expect(newLinkList.kthFromEnd(2)).toBe("CCC");
+  expect(newLinkList.kthFromEnd(0)).toStrictEqual("AAA");
+  expect(newLinkList.kthFromEnd(1)).toStrictEqual("BBB");
+  expect(newLinkList.kthFromEnd(2)).toStrictEqual("CCC");
 });
 
 describe("Edge Cases: Empty list or not a number", () => {
   const newLinkList = new LinkedList();
 
   it("Empty list", () => {
-    expect(newLinkList.toString()).toBe("NULL");
+    expect(newLinkList.toString()).toStrictEqual("NULL");
   });
 
   it("Empty list Kth to the end", () => {
-    expect(newLinkList.kthFromEnd(0)).toBe("Exception: Empty List.");
+    expect(newLinkList.kthFromEnd(0)).toStrictEqual("Exception: Empty List.");
   });
 
-  it("K value not a number", () => {
+  it("K value not a number or less than zero", () => {
     newLinkList.insert("AAA");
     newLinkList.insert("BBB");
 
-    expect(newLinkList.kthFromEnd("r")).toBe(
+    expect(newLinkList.kthFromEnd("r")).toStrictEqual(
+      "Exception: Needs to be a numeric value greater or equal to zero."
+    );
+
+    expect(newLinkList.kthFromEnd(-1)).toStrictEqual(
       "Exception: Needs to be a numeric value greater or equal to zero."
     );
   });

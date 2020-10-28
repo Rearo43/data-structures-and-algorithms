@@ -1,11 +1,13 @@
-# `Merge Sort`    
-> [code](merge-sort.test.js)
-> ![White board](../../whiteboards/merge-sort.jpeg)
+# `Merge Sort`
+
+> [code](merge-sort.test.js) > ![White board](../../whiteboards/merge-sort.jpeg)
+
 ## Pseudo Code
+
 _ALGORITHM Mergesort(arr)_
 
     DECLARE n <-- arr.length
-           
+
     if n > 1
       DECLARE mid <-- n/2
       DECLARE left <-- arr[0...mid]
@@ -32,7 +34,7 @@ _ALGORITHM Merge(left, right, arr)_
         else
             arr[k] <-- right[j]
             j <-- j + 1
-            
+
         k <-- k + 1
 
     if i = left.length

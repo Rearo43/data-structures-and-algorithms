@@ -48,13 +48,11 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
 /* TEST for linked-list.test.js below
 ------------------------------------------------------------------------------------------------ */
 const newLinkList = new LinkedList();
-
-it("should insatiate", () => {
-  expect(newLinkList).toBeDefined();
-});
 
 it("Add to empty list", () => {
   newLinkList.insert("AAA");
@@ -72,13 +70,15 @@ it("Insert multiple Nodes, while keeping previous Nodes (Head should change)", (
 });
 
 const list = new LinkedList();
-it("should insert before", () => {
 
+it("should insert before", () => {
   list.insert("AAA");
   list.insert("BBB");
   list.insert("CCC");
 
-  expect(list.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
+  expect(list.toString()).toStrictEqual(
+    "{ CCC } -> { BBB } -> { AAA } -> NULL"
+  );
 });
 
 it("should return true or false if the value is in the list", () => {
