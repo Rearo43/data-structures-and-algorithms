@@ -9,12 +9,16 @@
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage"
   },
+  "quokka": {
+    "babel": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "eslint": "^7.6.0",
-    "jest": "^26.3.0"
+    "jest": "^26.3.0",
+    "wallaby": "^1.0.1"
   },
   "devDependencies": {}
 }
