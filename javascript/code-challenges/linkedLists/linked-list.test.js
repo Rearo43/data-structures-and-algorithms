@@ -76,7 +76,9 @@ it("should insert before", () => {
   list.insert("BBB");
   list.insert("CCC");
 
-  expect(list.toString()).toStrictEqual("{ CCC } -> { BBB } -> { AAA } -> NULL");
+  expect(list.toString()).toStrictEqual(
+    "{ CCC } -> { BBB } -> { AAA } -> NULL"
+  );
 });
 
 it("should return true or false if the value is in the list", () => {

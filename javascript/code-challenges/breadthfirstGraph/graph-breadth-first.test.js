@@ -1,5 +1,5 @@
-'use strict';
-
+/* eslint-disable quotes */
+"use strict";
 
 function depthFirst(node, visited) {
   visited.add(node);
@@ -41,7 +41,7 @@ class Graph {
       !this.connections.has(startVertex) ||
       !this.connections.has(endVertex)
     ) {
-      throw new Error('Error: Nodes');
+      throw new Error("Error: Nodes");
     }
 
     const adjacencies = this.connections.get(startVertex);
@@ -50,7 +50,7 @@ class Graph {
 
   getNeighbors(vertex) {
     if (!this.connections.has(vertex)) {
-      throw new Error('Error: Vertex', vertex);
+      throw new Error("Error: Vertex", vertex);
     }
 
     return [...this.connections.get(vertex)];
@@ -96,7 +96,6 @@ class Graph {
     return depthFirst;
   }
 }
-
 
 /* TEST for linked-list-insert.test.js below
 ------------------------------------------------------------------------------------------------ */

@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 class Edges {
   constructor(node1, node2, weight = 1) {
@@ -99,12 +100,12 @@ function getEdges(arr, graph) {
 ------------------------------------------------------------------------------------------------ */
 let graph = new Graph();
 
-let AAA = graph.addVertex('AAA');
-let BBB = graph.addVertex('BBB');
-let CCC = graph.addVertex('CCC');
-let DDD = graph.addVertex('DDD');
-let EEE = graph.addVertex('EEE');
-let FFF = graph.addVertex('FFF');
+let AAA = graph.addVertex("AAA");
+let BBB = graph.addVertex("BBB");
+let CCC = graph.addVertex("CCC");
+let DDD = graph.addVertex("DDD");
+let EEE = graph.addVertex("EEE");
+let FFF = graph.addVertex("FFF");
 
 graph.addEdge(AAA, DDD, 100);
 graph.addEdge(BBB, CCC, 75);
@@ -113,14 +114,14 @@ graph.addEdge(AAA, EEE, 20);
 graph.addEdge(AAA, FFF, 15);
 graph.addEdge(DDD, EEE, 7);
 
-it('return price total for direct connections', () => {
-  expect(getEdges(['AAA', 'DDD', 'EEE'], graph)).toEqual(107);
-  expect(getEdges(['DDD', 'AAA', 'EEE'], graph)).toEqual(70);
-  expect(getEdges(['BBB', 'CCC'], graph)).toEqual(75);
+it("return price total for direct connections", () => {
+  expect(getEdges(["AAA", "DDD", "EEE"], graph)).toEqual(107);
+  expect(getEdges(["DDD", "AAA", "EEE"], graph)).toEqual(70);
+  expect(getEdges(["BBB", "CCC"], graph)).toEqual(75);
 });
 
-it('return price OF 0 for lack of direct connections', () => {
-  expect(getEdges(['AAA', 'BBB', 'CCC'], graph)).toEqual(0);
-  expect(getEdges(['CCC', 'DDD', 'BBB'], graph)).toEqual(0);
-  expect(getEdges(['BBB', 'FFF'], graph)).toEqual(0);
+it("return price OF 0 for lack of direct connections", () => {
+  expect(getEdges(["AAA", "BBB", "CCC"], graph)).toEqual(0);
+  expect(getEdges(["CCC", "DDD", "BBB"], graph)).toEqual(0);
+  expect(getEdges(["BBB", "FFF"], graph)).toEqual(0);
 });

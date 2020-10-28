@@ -1,8 +1,8 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 class Nodes {
-
-  constructor(value, right=null, left=null){
+  constructor(value, right = null, left = null) {
     this.value = value;
     this.right = right;
     this.left = left;
@@ -10,16 +10,14 @@ class Nodes {
 }
 
 class BinaryTree {
-
-  constructor(root=null){
+  constructor(root = null) {
     this.root = root;
   }
 
-  preOrder(){
+  preOrder() {
     const arr = [];
-    function pre(root){
-
-      if(!root){
+    function pre(root) {
+      if (!root) {
         return;
       }
 
@@ -32,12 +30,11 @@ class BinaryTree {
     return arr;
   }
 
-  inOrder(){
+  inOrder() {
     const arr = [];
 
-    function order(root){
-
-      if(!root){
+    function order(root) {
+      if (!root) {
         return;
       }
       order(root.left);
@@ -49,11 +46,10 @@ class BinaryTree {
     return arr;
   }
 
-  postOrder(){
+  postOrder() {
     const arr = [];
-    function post(root){
-
-      if(!root){
+    function post(root) {
+      if (!root) {
         return;
       }
 
@@ -69,16 +65,16 @@ class BinaryTree {
   maxVal() {
     let capMaxVal = this.root.value;
 
-    if(!this.root) {
+    if (!this.root) {
       return null;
     }
 
     function max(root) {
-      if(!root) {
+      if (!root) {
         return;
       }
 
-      if(root.value > capMaxVal) {
+      if (root.value > capMaxVal) {
         capMaxVal = root.value;
       }
 
@@ -93,39 +89,29 @@ class BinaryTree {
 }
 
 class BinarySearchTree extends BinaryTree {
-
-  add(value){
+  add(value) {
     const newNode = new Nodes(value);
 
-    if (this.root === null){
+    if (this.root === null) {
       this.root = newNode;
-    }
-
-    else {
+    } else {
       let current = this.root;
 
-      while(current){
-
-        if (value < current.value){
-
-          if (current.left === null){
+      while (current) {
+        if (value < current.value) {
+          if (current.left === null) {
             current.left = newNode;
             break;
-          }
-
-          else {
+          } else {
             current = current.left;
           }
         }
 
-        if (value > current.value){
-
-          if (current.right === null){
+        if (value > current.value) {
+          if (current.right === null) {
             current.right = newNode;
             break;
-          }
-
-          else {
+          } else {
             current = current.right;
           }
         }
@@ -133,36 +119,33 @@ class BinarySearchTree extends BinaryTree {
     }
   }
 
-  contains(value){
+  contains(value) {
     let node = this.root;
     let contain = false;
 
-    if(this.root === null){
+    if (this.root === null) {
       return null;
     }
 
-    while (node && !contain){
-      if (value < node.value){
+    while (node && !contain) {
+      if (value < node.value) {
         node = node.left;
       }
 
-      if (value > node.value){
+      if (value > node.value) {
         node = node.right;
-      }
-
-      else {
+      } else {
         contain = true;
       }
     }
 
-    if (!contain){
+    if (!contain) {
       return false;
     }
 
     return node;
   }
 }
-
 
 /* TEST for find-max-value.test.js below
 ------------------------------------------------------------------------------------------------ */
@@ -174,12 +157,12 @@ const fourth = new Nodes(430);
 const fifth = new Nodes(200);
 const treeTwo = new BinarySearchTree(new Nodes(17, fourth, fifth));
 
-it('Can successfully find the largest value in a tree', ()=>{
+it("Can successfully find the largest value in a tree", () => {
   expect(tree.maxVal()).toEqual(50);
-//   expect(treeTwo.maxVal()).toEqual(430);
+  //   expect(treeTwo.maxVal()).toEqual(430);
 });
 
-it('empty tree equal null', ()=>{
+it("empty tree equal null", () => {
   const tree = new BinarySearchTree();
   expect(tree.maxVal()).toBeNull;
 });

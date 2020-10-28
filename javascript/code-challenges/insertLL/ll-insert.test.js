@@ -1,7 +1,7 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 class Nodes {
-
   constructor(value, next = null) {
     this.value = value;
     this.next = next;
@@ -9,7 +9,6 @@ class Nodes {
 }
 
 class LinkedList {
-
   constructor() {
     this.head = null;
   }
@@ -19,7 +18,7 @@ class LinkedList {
   }
 
   toString() {
-    let str = '';
+    let str = "";
     let current = this.head;
 
     while (current) {
@@ -28,21 +27,20 @@ class LinkedList {
       current = current.next;
     }
 
-    return str + 'NULL';
+    return str + "NULL";
   }
 
   includes(value) {
     let headNode = this.head;
 
-    if(headNode.value === value){
+    if (headNode.value === value) {
       return true;
     }
 
-    while(headNode.value !== null){
+    while (headNode.value !== null) {
       headNode = headNode.next;
 
-      if(headNode === value){
-
+      if (headNode === value) {
         return true;
       }
 
@@ -51,50 +49,41 @@ class LinkedList {
   }
 }
 
-
 /* TEST for linked-list-insert.test.js below
 ------------------------------------------------------------------------------------------------ */
-describe('Tests from link-list.test.js', () => {
+describe("Tests from link-list.test.js", () => {
   const newLinkList = new LinkedList();
 
-  it('should insatiate', () => {
+  it("should insatiate", () => {
     expect(newLinkList).toBeDefined();
   });
 
+  it("Add to empty list", () => {
+    newLinkList.insert("AAA");
 
-  it('Add to empty list', () => {
-    newLinkList.insert('AAA');
-
-    expect(newLinkList.head.value).toStrictEqual('AAA');
+    expect(newLinkList.head.value).toStrictEqual("AAA");
   });
 
+  it("Insert multiple Nodes, while keeping previous Nodes (Head should change)", () => {
+    newLinkList.insert("AAA");
+    newLinkList.insert("BBB");
+    newLinkList.insert("CCC");
 
-  it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', () => {
-    newLinkList.insert('AAA');
-    newLinkList.insert('BBB');
-    newLinkList.insert('CCC');
-
-    expect(newLinkList.head.value).toStrictEqual('CCC');
-    expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
+    expect(newLinkList.head.value).toStrictEqual("CCC");
+    expect(newLinkList.head.next.next.value).toStrictEqual("AAA");
   });
 
-
-  it('should insert before', () => {
+  it("should insert before", () => {
     const list = new LinkedList();
-    list.insert('AAA');
-    list.insert('BBB');
-    list.insert('CCC');
+    list.insert("AAA");
+    list.insert("BBB");
+    list.insert("CCC");
 
-    expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+    expect(list.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
   });
 
-
-  it('should return true or false if the value is in the list', () => {
-    expect(newLinkList.includes('CCC')).toStrictEqual(true);
-    expect(newLinkList.includes('DDD')).toStrictEqual(false);
+  it("should return true or false if the value is in the list", () => {
+    expect(newLinkList.includes("CCC")).toStrictEqual(true);
+    expect(newLinkList.includes("DDD")).toStrictEqual(false);
   });
 });
-
-
-
-

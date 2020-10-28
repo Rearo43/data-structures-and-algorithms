@@ -15,7 +15,7 @@ class Queue {
   }
 
   enqueue(value) {
-    if (this.isEmpty()) {
+    if (!this.front) {
       this.front = new Nodes(value);
       this.end = this.front;
     } else {
@@ -25,7 +25,7 @@ class Queue {
   }
 
   dequeue() {
-    if (this.isEmpty()) {
+    if (!this.front) {
       return "Empty Queue (dequeue).";
     }
 
@@ -38,7 +38,7 @@ class Queue {
   }
 
   peek() {
-    if (this.isEmpty()) {
+    if (!this.front) {
       return "Empty Queue (peek).";
     }
 
@@ -64,7 +64,7 @@ class Stack {
   }
 
   pop() {
-    if (this.isEmpty()) {
+    if (!this.top) {
       return "Empty Stack (pop).";
     }
 
@@ -77,7 +77,7 @@ class Stack {
   }
 
   peek() {
-    if (this.isEmpty()) {
+    if (!this.top) {
       return "Empty Stack (peek).";
     }
 

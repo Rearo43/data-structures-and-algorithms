@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 function brackets(str) {
   let curl = 0; //1
@@ -14,22 +15,22 @@ function brackets(str) {
     //7 steps x string length aka N
     let place = str[i]; // Always one var
 
-    if (place === '{') {
+    if (place === "{") {
       curl++;
     }
-    if (place === '[') {
+    if (place === "[") {
       square++;
     }
-    if (place === '(') {
+    if (place === "(") {
       circle++;
     }
-    if (place === '}') {
+    if (place === "}") {
       curl--;
     }
-    if (place === ']') {
+    if (place === "]") {
       square--;
     }
-    if (place === ')') {
+    if (place === ")") {
       circle--;
     }
   }
@@ -43,10 +44,10 @@ function brackets(str) {
 
 /* TEST for linked-list.test.js below
 ------------------------------------------------------------------------------------------------ */
-it('Should return true if all have a counterpart return false for everything else', () => {
+it("Should return true if all have a counterpart return false for everything else", () => {
   // let str = '{}{Code}[Fellows](())';
   // let str1 = '{}{Code}[Fellows](())(](';
-  let str2 = '{}{Code}[Fellows](())(](((((({{{{}}{{{))';
+  let str2 = "{}{Code}[Fellows](())(](((((({{{{}}{{{))";
   // let str3 = '[]';
   // let str4 = '';
 
