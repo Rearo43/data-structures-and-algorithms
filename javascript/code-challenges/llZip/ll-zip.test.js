@@ -16,10 +16,14 @@ function zip(llOne, llTwo) {
   }
 
   while (llOne_Current && llTwo_Current) {
-    let one_Next = llOne_Current.next;
+    let one_next = llOne_Current.next;
+    let two_next = llTwo_Current.next;
 
     llOne_Current.next = llTwo_Current;
-    llTwo_Current.next = one_Next;
+    llTwo_Current.next = one_next;
+
+    llOne_Current = one_next;
+    llTwo_Current = two_next;
   }
 
   return llOne.head;

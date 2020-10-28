@@ -54,10 +54,6 @@ module.exports = LinkedList;
 ------------------------------------------------------------------------------------------------ */
 const newLinkList = new LinkedList();
 
-it("should insatiate", () => {
-  expect(newLinkList).toBeDefined();
-});
-
 it("Add to empty list", () => {
   newLinkList.insert("AAA");
 
@@ -80,7 +76,7 @@ it("should insert before", () => {
   list.insert("BBB");
   list.insert("CCC");
 
-  expect(list.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
+  expect(list.toString()).toStrictEqual("{ CCC } -> { BBB } -> { AAA } -> NULL");
 });
 
 it("should return true or false if the value is in the list", () => {
