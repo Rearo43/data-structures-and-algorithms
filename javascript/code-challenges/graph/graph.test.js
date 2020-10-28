@@ -1,68 +1,89 @@
 'use strict';
 
-class Nodes { //Vertex
+class Nodes {
+  //Vertex
 
   constructor(value) {
     this.value = value;
-    this.connects = [];
+    this.connects = new Set(); //vertex
   }
 }
 
 class Edge {
-
-  constructor(source, destination, weight=null) {
-    this.source = source;
+  constructor(origin, destination, weight = null) {
+    this.origin = origin;
     this.destination = destination;
     this.weight = weight;
   }
 }
 
 class Graph {
-
   constructor() {
-    this.relation = [];
-    this.edges = [];
+    this.vertex = new Set();
   }
 
   addNode(node) {
-    const newNode = new Nodes();
+    // const newNode = new Nodes(node.value);
+    
+    return this.vertex.add(new Nodes(node.value));
 
-    this.relation.push(node);
-
-    return newNode;
+    // return newNode;
   }
 
-  addEdge(left, right, weight = null) { //Relationship Both Ways
-    left.connects.push(right);
-    right.connects.push(left);
+  addEdge(origin, destination) {
+    let nodeOO, nodeDD;
 
-    const edge = new Edge(left, right, weight);
-
-    this.edges.push(edge);
-  }
-
-  getNodes() {
-    return this.relation;
-  }
-
-  getNeighbors(node) {
-    const edges = [];
-
-    this.edges.forEach(edge => {
-
-      if (edge.source === node.value) {
-        edges.push(edge);
+    this.vertex.forEach((node) => {
+      if (node.value === origin.value) {
+        nodeOO = node;
+      }
+      if (node.value === destination.value) {
+        nodeDD = node;
       }
     });
 
-    return edges;
+    if (nodeOO === undefined || nodeDD === undefined) {
+      throw new Error('Node(s) Not in Graph');
+    }
+
+    let myEdges = new Edge(nodeOO, nodeDD);
+    this.vertex.forEach((node) => {
+      if (node.value === origin.value) {
+        node.connects.add(myEdges);
+      }
+      if (node.value === destination.value) {
+        node.connects.add(myEdges);
+      }
+    });
+  }
+
+  getNodes() {
+    return this.vertex;
+  }
+
+  getNeighbors(node) {
+    let listOfNeighbors = {};
+    let currNode;
+
+    this.vertex.forEach((V) => {
+      if (V.value === node.value) {
+        currNode = V;
+      }
+    });
+
+    currNode.connects.forEach((C) => {
+      if (C.origin.value === currNode.value) {
+        listOfNeighbors[C.destination.value] = C.weight; //if no weight it's null
+      } else {
+        listOfNeighbors[C.origin.value] = C.weight; //if no weight it's null
+      }
+    });
   }
 
   size() {
-    return this.relation.length;
+    return this.vertex.size;
   }
 }
-
 
 /* TEST for graph.test.js below
 ------------------------------------------------------------------------------------------------ */
@@ -74,10 +95,26 @@ let nodeDDD = new Nodes('DDD');
 let nodeEEE = new Nodes('EEE');
 let nodeFFF = new Nodes('FFF');
 let nodeGGG = new Nodes('GGG');
-it('testing getNeighbors ', () => {
-  graph.addNode(nodeGGG);
-  graph.addEdge(nodeGGG, nodeBBB);
-  expect(graph.getNeighbors(nodeGGG)).toEqual(1);
+// it('testing getNeighbors ', () => {
+//   graph.addNode(nodeGGG);
+//   graph.addEdge(nodeGGG, nodeBBB);
+//   expect(graph.getNeighbors(nodeGGG)).toEqual(1);
+// });
+
+it('graph working', () => {
+  expect(graph.size()).toStrictEqual(0);
 });
 
+it('add one node to graph', () => {
+  graph.addNode(nodeAAA);
+  graph.addNode(nodeBBB);
+  graph.addNode(nodeCCC);
 
+  expect(graph.size()).toStrictEqual(3);
+});
+
+it('proof of added edge', () => {
+  graph.addEdge(nodeAAA, nodeCCC);
+
+  expect(graph.getNeighbors(nodeAAA)).toStrictEqual(['CCC', null]);
+});

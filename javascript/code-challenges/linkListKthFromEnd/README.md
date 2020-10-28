@@ -15,3 +15,4 @@
 ### Approach & Efficiency
 
 ### Solution
+> ![White Board](../../whiteboards/link-list-kth-from-end.test.png)

@@ -1,8 +1,8 @@
 # `Array Binary Search`
 > [code](array-binary-search.test.js)
-> ![White Board](./Untitled_Artwork.jpg)
 ### Challenge
 
 ### Approach & Efficiency
 
 ### Solution
+> ![White Board](../../whiteboards/array-binary-search.png)
