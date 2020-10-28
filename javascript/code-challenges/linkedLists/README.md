@@ -20,5 +20,6 @@
 ### Approach & Efficiency
 
 ### Solution
+> ![White board](../../whiteboards/linked-list.png)
 
 
