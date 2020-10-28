@@ -1,7 +1,7 @@
-'use strict';
+/* eslint-disable quotes */
+"use strict";
 
 class Nodes {
-
   constructor(value, next = null) {
     this.value = value;
     this.next = next;
@@ -9,7 +9,6 @@ class Nodes {
 }
 
 class LinkedList {
-
   constructor() {
     this.head = null;
   }
@@ -19,7 +18,7 @@ class LinkedList {
   }
 
   toString() {
-    let str = '';
+    let str = "";
     let current = this.head;
 
     while (current) {
@@ -28,32 +27,33 @@ class LinkedList {
       current = current.next;
     }
 
-    return str + 'NULL';
+    return str + "NULL";
   }
 
   kthFromEnd(k) {
-    if(!this.head) {
-      return 'Exception: Empty List.';
-    } else if(isNaN(k)) {
-      return 'Exception: Needs to be a numeric value greater or equal to zero.';
+    if (!this.head) {
+      return "Exception: Empty List.";
+    } else if (isNaN(k)) {
+      return "Exception: Needs to be a numeric value greater or equal to zero.";
     }
 
-    let nodeCount = 0;
+    let count = 0;
     let current = this.head;
 
-    while(current.next) {
-      nodeCount++;
+    while (current.next) {
+      count++;
+
       current = current.next;
-      console.log(current);
     }
 
-    let indexK = nodeCount - k;
+    let kth = count - k;
 
     current = this.head;
-    nodeCount = 0;
+    count = 0;
 
-    while(nodeCount < indexK) {
-      nodeCount++;
+    while (count < kth) {
+      count++;
+
       current = current.next;
     }
 
@@ -61,78 +61,73 @@ class LinkedList {
   }
 }
 
-
 /* TEST for link-list-kth-from-end.test.js below
 ------------------------------------------------------------------------------------------------ */
-describe('Tests from link-list.test.js', () => {
+describe("Tests from link-list.test.js", () => {
   const newLinkList = new LinkedList();
 
-  it('should insatiate', () => {
+  it("should insatiate", () => {
     expect(newLinkList).toBeDefined();
   });
 
+  it("Add to empty list", () => {
+    newLinkList.insert("AAA");
 
-  it('Add to empty list', () => {
-    newLinkList.insert('AAA');
-
-    expect(newLinkList.head.value).toStrictEqual('AAA');
+    expect(newLinkList.head.value).toStrictEqual("AAA");
   });
 
+  it("Insert multiple Nodes, while keeping previous Nodes (Head should change)", () => {
+    newLinkList.insert("AAA");
+    newLinkList.insert("BBB");
+    newLinkList.insert("CCC");
 
-  it('Insert multiple Nodes, while keeping previous Nodes (Head should change)', () => {
-    newLinkList.insert('AAA');
-    newLinkList.insert('BBB');
-    newLinkList.insert('CCC');
-
-    expect(newLinkList.head.value).toStrictEqual('CCC');
-    expect(newLinkList.head.next.next.value).toStrictEqual('AAA');
+    expect(newLinkList.head.value).toStrictEqual("CCC");
+    expect(newLinkList.head.next.next.value).toStrictEqual("AAA");
   });
 
-
-  it('should insert before', () => {
+  it("should insert before", () => {
     const list = new LinkedList();
-    list.insert('AAA');
-    list.insert('BBB');
-    list.insert('CCC');
+    list.insert("AAA");
+    list.insert("BBB");
+    list.insert("CCC");
 
-    expect(list.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+    expect(list.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
   });
 });
 
 const newLinkList = new LinkedList();
 
-it('should insert before', () => {
-  newLinkList.insert('AAA');
-  newLinkList.insert('BBB');
-  newLinkList.insert('CCC');
+it("should insert before", () => {
+  newLinkList.insert("AAA");
+  newLinkList.insert("BBB");
+  newLinkList.insert("CCC");
 
-  expect(newLinkList.toString()).toBe('{ CCC } -> { BBB } -> { AAA } -> NULL');
+  expect(newLinkList.toString()).toBe("{ CCC } -> { BBB } -> { AAA } -> NULL");
 });
 
-it('Find Kth from end', () => {
-  expect(newLinkList.kthFromEnd(0)).toBe('AAA');
-  expect(newLinkList.kthFromEnd(1)).toBe('BBB');
-  expect(newLinkList.kthFromEnd(2)).toBe('CCC');
+it("Find Kth from end", () => {
+  expect(newLinkList.kthFromEnd(0)).toBe("AAA");
+  expect(newLinkList.kthFromEnd(1)).toBe("BBB");
+  expect(newLinkList.kthFromEnd(2)).toBe("CCC");
 });
 
-describe('Edge Cases: Empty list or not a number', () => {
+describe("Edge Cases: Empty list or not a number", () => {
   const newLinkList = new LinkedList();
 
-  it('Empty list', () => {
-
-    expect(newLinkList.toString()).toBe('NULL');
+  it("Empty list", () => {
+    expect(newLinkList.toString()).toBe("NULL");
   });
 
-  it('Empty list Kth to the end', () => {
-
-    expect(newLinkList.kthFromEnd(0)).toBe('Exception: Empty List.');
+  it("Empty list Kth to the end", () => {
+    expect(newLinkList.kthFromEnd(0)).toBe("Exception: Empty List.");
   });
 
-  it('K value not a number', () => {
-    newLinkList.insert('AAA');
-    newLinkList.insert('BBB');
+  it("K value not a number", () => {
+    newLinkList.insert("AAA");
+    newLinkList.insert("BBB");
 
-    expect(newLinkList.kthFromEnd('r')).toBe('Exception: Needs to be a numeric value greater or equal to zero.');
+    expect(newLinkList.kthFromEnd("r")).toBe(
+      "Exception: Needs to be a numeric value greater or equal to zero."
+    );
   });
-
 });
