@@ -93,7 +93,9 @@ class Stack {
   }
 }
 
-/* TEST for stack-and-queue.js below
+module.exports = Stack;
+
+/* TEST for stack-and-queue.test.js below
 ------------------------------------------------------------------------------------------------ */
 describe("QUEUE Class method tests", () => {
   const queue = new Queue();
