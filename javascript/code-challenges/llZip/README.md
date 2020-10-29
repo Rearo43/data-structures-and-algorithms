@@ -1,4 +1,4 @@
-# `Zipped Linked Lists `
+# `Zipped Linked Lists`
 
 > [code](ll-zip.test.js)
 
