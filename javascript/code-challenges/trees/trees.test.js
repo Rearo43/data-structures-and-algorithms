@@ -67,7 +67,68 @@ class BinaryTree {
   }
 }
 
+class BinarySearchTree extends BinaryTree {
+  constructor(root) {
+    super(root);
+  }
 
+  add(value) {
+    const newNode = new Nodes(value);
+    let current = this.root;
+
+    if (!this.root) {
+      this.root = newNode;
+      return;
+    }
+
+    while (value < current.value) {
+      if (!current.left) {
+        current.left = newNode;
+        break;
+      } else {
+        current = current.left;
+      }
+    }
+
+    while (value > current.value) {
+      if (!current.right) {
+        current.right = newNode;
+        break;
+      } else {
+        current = current.right;
+      }
+    }
+  }
+
+  contains(value) {
+    let current = this.root;
+    // let contain = false;
+
+    if (!current) {
+      return false;
+    }
+
+    while (value < current.value) {
+      if (current.left) {
+        current = current.left;
+      } else {
+        return false;
+      }
+    }
+
+    while (value > current.value) {
+      if (current.right) {
+        current = current.right;
+      } else {
+        return false;
+      }
+    }
+
+    if (value === current.value) {
+      return true;
+    }
+  }
+}
 
 /* TEST for trees.test.js below
 ------------------------------------------------------------------------------------------------ */
@@ -114,19 +175,24 @@ it("post-order traversal", () => {
   expect(tree.postOrder()).toEqual(["DDD", "EEE", "BBB", "FFF", "CCC", "AAA"]);
 });
 
-// const tree = new BinarySearchTree(aaa);
+const searchTree = new BinarySearchTree();
 
-// xit('add node plus left side', () =>{
-//   tree.add(2);
+it("add nodes", () => {
+  searchTree.add(43);
+  searchTree.add(12);
+  searchTree.add(10);
 
-//   expect(tree.root.value).toStrictEqual(43);
-//   expect(tree.root.left.value).toStrictEqual(2);
-//   expect(tree.root.right).toBeNull;
-// });
+  expect(searchTree.root.value).toStrictEqual(43);
+  expect(searchTree.root.left.value).toStrictEqual(12);
+  expect(searchTree.root.left.left.value).toStrictEqual(10);
+  expect(searchTree.root.right).toBeNull;
+});
 
-// xit('add right side', () =>{
-//   tree.add(50);
+it("contains, false", () => {
+  expect(searchTree.contains(34)).toStrictEqual(false);
+});
 
-//   expect(tree.root.right.value).toStrictEqual(50);
-//   expect(tree.root.left.value).toStrictEqual(2);
-// });
+it("contains, true", () => {
+  expect(searchTree.contains(43)).toStrictEqual(true);
+  expect(searchTree.contains(10)).toStrictEqual(true);
+});
