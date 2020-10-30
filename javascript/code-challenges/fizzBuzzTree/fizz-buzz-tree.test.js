@@ -1,6 +1,13 @@
 /* eslint-disable quotes */
 "use strict";
 
+class Nodes {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
 function fizzBuzzTree(node) {
   if (!node.root) {
     return;
