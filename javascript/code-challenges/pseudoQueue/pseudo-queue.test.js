@@ -55,7 +55,3 @@ it("enqueue multiple and peek", () => {
 it("dequeue", () => {
   expect(PQ.dequeue()).toBe("AAA");
 });
-
-it("peek", () => {
-  expect(PQ.One.peek()).toBe("EEE");
-});

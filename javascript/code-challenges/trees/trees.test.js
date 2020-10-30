@@ -1,45 +1,42 @@
-'useStrict';
+/* eslint-disable quotes */
+"useStrict";
 
 class Nodes {
-
-  constructor(value, right=null, left=null){
+  constructor(value, left = null, right = null) {
     this.value = value;
-    this.right = right;
     this.left = left;
+    this.right = right;
   }
 }
 
 class BinaryTree {
-
-  constructor(root=null){
+  constructor(root = null) {
     this.root = root;
   }
 
-  preOrder(){
+  preOrder() {
     const arr = [];
 
-    function pre(root){
-
-      if(!root){
+    function pre(root) {
+      if (!root) {
         return;
       }
 
       arr.push(root.value);
 
-      pre(root.right);
       pre(root.left);
+      pre(root.right);
     }
 
     pre(this.root);
     return arr;
   }
 
-  inOrder(){
+  inOrder() {
     const arr = [];
 
-    function order(root){
-
-      if(!root){
+    function order(root) {
+      if (!root) {
         return;
       }
 
@@ -52,12 +49,11 @@ class BinaryTree {
     return arr;
   }
 
-  postOrder(){
+  postOrder() {
     const arr = [];
 
-    function post(root){
-
-      if(!root){
+    function post(root) {
+      if (!root) {
         return;
       }
 
@@ -72,7 +68,6 @@ class BinaryTree {
 }
 
 class BinarySearchTree extends BinaryTree {
-
   constructor(root) {
     super(root);
   }
@@ -81,118 +76,123 @@ class BinarySearchTree extends BinaryTree {
     const newNode = new Nodes(value);
     let current = this.root;
 
-    if (!this.root){
+    if (!this.root) {
       this.root = newNode;
       return;
     }
 
-    while(value < current.left) {
-
-      if(!current.left) {
+    while (value < current.value) {
+      if (!current.left) {
         current.left = newNode;
         break;
-      }
-
-      else{
+      } else {
         current = current.left;
       }
     }
 
-    while(value > current.right) {
-      if(!current.right) {
+    while (value > current.value) {
+      if (!current.right) {
         current.right = newNode;
         break;
-      }
-
-      else{
+      } else {
         current = current.right;
       }
     }
   }
 
-  contains(value){
-    let node = this.root;
-    let contain = false;
+  contains(value) {
+    let current = this.root;
+    // let contain = false;
 
-    if(!this.root){
-      return null;
-    }
-
-    while (value < node.value){
-      
-      if (node.left){
-        node = node.left;
-      }
-
-      else {
-        return false;
-      }
-
-      else {
-        contain = true;
-      }
-    }
-
-    if (!contain){
+    if (!current) {
       return false;
     }
 
-    return node;
+    while (value < current.value) {
+      if (current.left) {
+        current = current.left;
+      } else {
+        return false;
+      }
+    }
+
+    while (value > current.value) {
+      if (current.right) {
+        current = current.right;
+      } else {
+        return false;
+      }
+    }
+
+    if (value === current.value) {
+      return true;
+    }
   }
 }
 
 /* TEST for trees.test.js below
 ------------------------------------------------------------------------------------------------ */
-const bbb = new Nodes('BBB');
-const ccc = new Nodes('CCC');
-const aaa = new Nodes('AAA', bbb, ccc);
+const fff = new Nodes("FFF");
+const eee = new Nodes("EEE");
+const ddd = new Nodes("DDD");
+const ccc = new Nodes("CCC", fff);
+const bbb = new Nodes("BBB", ddd, eee);
+const aaa = new Nodes("AAA", bbb, ccc);
 
-it('instantiate', () =>{
-  expect(BinarySearchTree).toBeDefined();
+const tree = new BinaryTree(aaa);
+
+//          AAA
+//    BBB          CCC
+// DDD  EEE       FFF
+
+it("single node", () => {
+  expect(tree.root.value).toStrictEqual("AAA");
 });
 
-
-it('single node', () =>{
-  const tree = new BinarySearchTree('root');
-
-  expect(tree.root).toBe('root');
+it("pre-order", () => {
+  expect(tree.preOrder()).toStrictEqual([
+    "AAA",
+    "BBB",
+    "DDD",
+    "EEE",
+    "CCC",
+    "FFF",
+  ]);
 });
 
-
-it('pre-order traversal', ()=>{
-  const tree = new BinarySearchTree(aaa);
-
-  expect(tree.preOrder()).toEqual([ 'AAA','CCC', 'BBB']);
+it("in-order", () => {
+  expect(tree.inOrder()).toStrictEqual([
+    "DDD",
+    "BBB",
+    "EEE",
+    "AAA",
+    "FFF",
+    "CCC",
+  ]);
 });
 
-
-it('in-order traversal', ()=>{
-  const tree = new BinarySearchTree(aaa);
-
-  expect(tree.inOrder()).toEqual([ 'CCC', 'AAA', 'BBB']);
+it("post-order traversal", () => {
+  expect(tree.postOrder()).toEqual(["DDD", "EEE", "BBB", "FFF", "CCC", "AAA"]);
 });
 
+const searchTree = new BinarySearchTree();
 
-it('post-order traversal', ()=>{
-  const tree = new BinarySearchTree(aaa);
+it("add nodes", () => {
+  searchTree.add(43);
+  searchTree.add(12);
+  searchTree.add(10);
 
-  expect(tree.postOrder()).toEqual([ 'CCC', 'BBB', 'AAA']);
+  expect(searchTree.root.value).toStrictEqual(43);
+  expect(searchTree.root.left.value).toStrictEqual(12);
+  expect(searchTree.root.left.left.value).toStrictEqual(10);
+  expect(searchTree.root.right).toBeNull;
 });
 
-const tree = new BinarySearchTree(aaa);
-
-xit('add node plus left side', () =>{
-  tree.add(2);
-
-  expect(tree.root.value).toStrictEqual(43);
-  expect(tree.root.left.value).toStrictEqual(2);
-  expect(tree.root.right).toBeNull;
+it("contains, false", () => {
+  expect(searchTree.contains(34)).toStrictEqual(false);
 });
 
-
-xit('add right side', () =>{
-  tree.add(50);
-
-  expect(tree.root.right.value).toStrictEqual(50);
-  expect(tree.root.left.value).toStrictEqual(2);
+it("contains, true", () => {
+  expect(searchTree.contains(43)).toStrictEqual(true);
+  expect(searchTree.contains(10)).toStrictEqual(true);
 });
