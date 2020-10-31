@@ -130,6 +130,8 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
+module.exports = BinaryTree;
+
 /* TEST for trees.test.js below
 ------------------------------------------------------------------------------------------------ */
 const fff = new Nodes("FFF");

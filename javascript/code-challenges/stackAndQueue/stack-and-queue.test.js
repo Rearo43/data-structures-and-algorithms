@@ -93,7 +93,7 @@ class Stack {
   }
 }
 
-module.exports = Stack;
+module.exports = { Stack, Queue, Nodes };
 
 /* TEST for stack-and-queue.test.js below
 ------------------------------------------------------------------------------------------------ */

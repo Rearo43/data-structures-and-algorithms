@@ -20,14 +20,10 @@ function fizzBuzzTree(node) {
 
     if (root.value % 3 === 0 && root.value % 5 === 0) {
       root.value = "FizzBuzz";
-    }
-
-    if (root.value % 5 === 0) {
-      root.value = "Buzz";
-    }
-
-    if (root.value % 3 === 0) {
+    } else if (root.value % 3 === 0) {
       root.value = "Fizz";
+    } else if (root.value % 5 === 0) {
+      root.value = "Buzz";
     } else {
       root.value = root.value.toString();
     }
@@ -40,3 +36,25 @@ function fizzBuzzTree(node) {
 
 /* TEST for fizz-buzz-tree.test.js below
 ------------------------------------------------------------------------------------------------ */
+const binaryTree = require("../trees/trees.test");
+
+const fff = new Nodes(30);
+const eee = new Nodes(34);
+const ddd = new Nodes(43);
+const ccc = new Nodes(15, fff);
+const bbb = new Nodes(3, ddd, eee);
+const aaa = new Nodes(5, bbb, ccc);
+
+const tree = new binaryTree(aaa);
+
+//          5
+//    3          15
+// 43  34       30
+
+it("create tree", () => {
+  expect(tree).toBeTruthy();
+  expect(tree.root.value).toBe(5);
+  // fizzBuzzTree(tree);
+  console.log(tree.preOrder());
+  expect(tree.preOrder()).toEqual([]);
+});
